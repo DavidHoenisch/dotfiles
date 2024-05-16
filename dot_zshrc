@@ -1,0 +1,54 @@
+echo """
+███    ███  ██████   ██████ ██   ██ ██ ███    ██  ██████       ██  █████  ██    ██
+████  ████ ██    ██ ██      ██  ██  ██ ████   ██ ██            ██ ██   ██  ██  ██
+██ ████ ██ ██    ██ ██      █████   ██ ██ ██  ██ ██   ███      ██ ███████   ████
+██  ██  ██ ██    ██ ██      ██  ██  ██ ██  ██ ██ ██    ██ ██   ██ ██   ██    ██
+██      ██  ██████   ██████ ██   ██ ██ ██   ████  ██████   █████  ██   ██    ██
+
+BUILD SOMETHING EXCEPTIONAL
+@DavidHoenisch
+"""
+
+
+#export $(cat ~/.env.creds|xargs)
+export PAGER="less"
+
+plugins=(git)
+
+alias find="$(which fzf)"
+alias conf="nvim ~/.config/nvim/"
+alias gf="cd ~/Documents/Github/"
+alias ls="$(which eza)"
+alias ll="$(which eza) -liR"
+alias work="~/.local/bin/work"
+alias lz="lazygit"
+alias zz="nvim $HOME/.zshrc"
+alias ref="source $HOME/.zshrc"
+alias cat="bat"
+alias ta="tmux attach-session -t"
+alias tls="tmux ls"
+alias tks="tmux kill-server"
+alias tt="timedatectl"
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
+
+# added by Webi for pyenv
+eval "$(starship init zsh)"
+
+eval "$(zoxide init --cmd cd  zsh)"
+
+
+
+# added by Webi for pyenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PATH="$PATH:/home/dhoenisch/.local/share/bob/nvim-bin"
+
+
+# export creds
+source ~/.creds.env
+
