@@ -8,3 +8,9 @@ swaymsg "exec alacritty"
 
 swaymsg "workspace number 3"
 swaymsg "exec flatpak run com.bitwarden.desktop"
+
+swaymsg "workspace number 4"
+swaymsg "exec flatpak run com.bitwarden.desktop"
+
+swaymsg "workspace number 5"
+swaymsg "exec flatpak run com.bitwarden.desktop"
