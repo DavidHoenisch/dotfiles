@@ -56,8 +56,8 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -699,7 +699,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'rose-pine-moon'
+      vim.cmd.colorscheme 'rose-pine'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -710,11 +710,11 @@ require('lazy').setup({
   -- NOTE it is unclear why this does not work
 
   {
-    vim.cmd 'highlight Normal ctermbg=NONE guibg=NONE',
-    vim.cmd 'highlight NonText ctermbg=NONE guibg=NONE',
-    vim.cmd 'highlight LineNr ctermbg=NONE guibg=NONE',
-    vim.cmd 'highlight Folded ctermbg=NONE guibg=NONE',
-    vim.cmd 'highlight EndOfBuffer ctermbg=NONE guibg=NONE',
+    vim.cmd 'highlight Normal guibg=none',
+    vim.cmd 'highlight NonText guibg=none',
+    vim.cmd 'highlight LineNr guibg=none',
+    vim.cmd 'highlight Folded guibg=none',
+    vim.cmd 'highlight EndOfBuffer guibg=none',
   },
 
   -- Highlight todo, notes, etc in comments
