@@ -1,0 +1,10 @@
+#!/bin/bash
+
+swaymsg "workspace number 1"
+swaymsg "exec firefox"
+
+swaymsg "workspace number 2"
+swaymsg "exec alacritty"
+
+swaymsg "workspace number 3"
+swaymsg "exec flatpak run com.bitwarden.desktop"
