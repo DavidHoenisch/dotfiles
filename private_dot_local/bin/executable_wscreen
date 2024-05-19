@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Detect connected displays
+PRIMARY_DISPLAY="eDP-1" # Internal display, change this if needed
+EXTERNAL_DISPLAY=$(swaymsg -t get_outputs | jq -r '.[] | select(.name != "'$PRIMARY_DISPLAY'" and .active == true) | .name')
+
+# Check if an external display is connected
+if [ -z "$EXTERNAL_DISPLAY" ]; then
+    echo "No external display detected."
+    exit 1
+fi
+
+# Get screen resolution of the primary display
+PRIMARY_RES=$(swaymsg -t get_outputs | jq -r '.[] | select(.name == "'$PRIMARY_DISPLAY'") | .current_mode | "\(.width)x\(.height)"')
+
+# Get screen resolution of the external display
+EXTERNAL_RES=$(swaymsg -t get_outputs | jq -r '.[] | select(.name == "'$EXTERNAL_DISPLAY'") | .current_mode | "\(.width)x\(.height)"')
+
+# Set the external display as the primary display
+swaymsg output $EXTERNAL_DISPLAY resolution $EXTERNAL_RES position 0 0
+swaymsg output $PRIMARY_DISPLAY resolution $PRIMARY_RES position $(echo $EXTERNAL_RES | cut -d 'x' -f 1) 0
+
+# Set gaps configuration
+swaymsg gaps inner 10
+swaymsg gaps outer 15
+
+echo "Extended display configuration applied with external display as primary."
