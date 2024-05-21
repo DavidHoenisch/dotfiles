@@ -14,4 +14,7 @@ return {
     ft = { 'go', 'gomod' },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },
-}
+},
+  -- shortcuts for ray-x
+  vim.api.nvim_set_keymap('n', '<leader>ggi', ':GoImports<CR>', { silent = true, noremap = true }),
+  vim.api.nvim_set_keymap('n', '<leader>ggf', ':GoFmt<CR>', { silent = true, noremap = true })

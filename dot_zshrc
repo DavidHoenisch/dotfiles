@@ -29,6 +29,7 @@ alias ta="tmux attach-session -t"
 alias tls="tmux ls"
 alias tks="tmux kill-server"
 alias tt="timedatectl"
+alias nop="/bin/bash $HOME/.local/bin/nop"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
@@ -47,8 +48,9 @@ eval "$(zoxide init --cmd cd  zsh)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PATH="$PATH:/home/dhoenisch/.local/share/bob/nvim-bin"
-
+export FZF_COMPLETION_TRIGGER='~~'
 
 # export creds
 source ~/.creds.env
 
+source ~/.hisconfig
