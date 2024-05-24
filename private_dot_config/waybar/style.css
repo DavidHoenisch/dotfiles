@@ -1,12 +1,11 @@
 * {
     font-family: 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
     font-size: 13px;
-    border-radius: 3px;
+    border-radius: 10px;
 }
 
 window#waybar {
     background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -54,6 +53,10 @@ button:hover {
 }
 
 #workspaces button {
+    border-radius: 10px;
+}
+
+#workspaces button {
     padding: 0 5px;
     background-color: transparent;
     color: #ffffff;
@@ -65,7 +68,6 @@ button:hover {
 
 #workspaces button.focused {
     background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.urgent {
@@ -115,6 +117,7 @@ button:hover {
 
 #clock {
     background-color: #64727D;
+    border-radius: 5px
 }
 
 #battery {
@@ -136,8 +139,8 @@ button:hover {
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background-color: #D3D3D3;
+    color: #000000;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -150,17 +153,17 @@ button:hover {
 }
 
 #power-profiles-daemon.performance {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background-color: #D3D3D3;
+    color: #000000;
 }
 
 #power-profiles-daemon.balanced {
-    background-color: #2980b9;
-    color: #ffffff;
+    background-color: #D3D3D3;
+    color: #000000;
 }
 
 #power-profiles-daemon.power-saver {
-    background-color: #2ecc71;
+    background-color: #D3D3D3;
     color: #000000;
 }
 
@@ -168,13 +171,16 @@ label:focus {
     background-color: #000000;
 }
 
+/* keep */
 #cpu {
-    background-color: #2ecc71;
+    background-color: #D3D3D3;
     color: #000000;
 }
 
+
 #memory {
-    background-color: #9b59b6;
+    background-color: #D3D3D3;
+    color: #000000;
 }
 
 #disk {
@@ -185,16 +191,19 @@ label:focus {
     background-color: #90b1b1;
 }
 
+/* keep */
 #network {
-    background-color: #2980b9;
+    background-color: #D3D3D3;
+    color: #000000;
 }
 
 #network.disconnected {
     background-color: #f53c3c;
 }
 
+/* keep */
 #pulseaudio {
-    background-color: #f1c40f;
+    background-color: #D3D3D3;
     color: #000000;
 }
 

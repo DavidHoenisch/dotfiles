@@ -38,7 +38,7 @@ launch_in_workspace() {
         swaymsg "move workspace to output $EXTERNAL_DISPLAY"
     fi
     swaymsg "exec $command"
-    sleep 1
+    sleep 1.5
 }
 
 # Launch applications in specific workspaces

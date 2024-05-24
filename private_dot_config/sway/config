@@ -7,7 +7,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 # Recommends: foot
-set $term foot
+set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -60,7 +60,6 @@ input "1267:12573:ELAN0412:00_04F3:311D_Touchpad" {
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec alacritty
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -219,9 +218,12 @@ include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "
 
 # custom 
 
-for_window [class=".*"] border none
+for_window [class=".*"] border 3
 
 
-bindsym $mod+q exec swaylock
 bindsym $mod+SHIFT+n exec /home/dhoenisch/.local/bin/kscreens
 bindsym $mod+SHIFT+w exec /home/dhoenisch/.local/bin/wscreen
+bindsym $mod+Escape exec /home/dhoenisch/.local/bin/lockscreen
+bindsym $mod+Return exec alacritty
+bindsym $mod+shift+b exec firefox
+
