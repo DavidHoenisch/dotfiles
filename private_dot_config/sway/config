@@ -218,6 +218,10 @@ include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "
 
 
 # custom 
+
+for_window [class=".*"] border none
+
+
 bindsym $mod+q exec swaylock
 bindsym $mod+SHIFT+n exec /home/dhoenisch/.local/bin/kscreens
 bindsym $mod+SHIFT+w exec /home/dhoenisch/.local/bin/wscreen
