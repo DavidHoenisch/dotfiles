@@ -38,14 +38,14 @@ launch_in_workspace() {
         swaymsg "move workspace to output $EXTERNAL_DISPLAY"
     fi
     swaymsg "exec $command"
-    sleep 1.5
+    sleep 2
 }
 
 # Launch applications in specific workspaces
 launch_in_workspace "number 1" "alacritty"
 launch_in_workspace "number 2" "firefox"
 launch_in_workspace "number 3" "flatpak run com.bitwarden.desktop"
-launch_in_workspace "number 4" "/usr/lib/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo"
-launch_in_workspace "number 5" "/usr/lib/opt/google/chrome/google-chrome --profile-directory=Default --app-id=ainjpeloaaccnmmdhgagjnfnfakjnnle"
+launch_in_workspace "number 4" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo"
+launch_in_workspace "number 5" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=ainjpeloaaccnmmdhgagjnfnfakjnnle"
 launch_in_workspace "number 6" "flatpak run org.telegram.desktop"
 launch_in_workspace "number 7" "flatpak run com.discordapp.Discord"
