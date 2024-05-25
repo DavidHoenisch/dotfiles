@@ -1,0 +1,11 @@
+#!/bin/bash 
+
+file=$(fzf --preview='bat --theme=1337 {}')
+
+
+if [[ $file == "" ]] 
+then
+	exit 1
+else
+	nvim $file 
+fi
