@@ -48,9 +48,13 @@ eval "$(zoxide init --cmd cd  zsh)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PATH="$PATH:/home/dhoenisch/.local/share/bob/nvim-bin"
+
+
 export FZF_COMPLETION_TRIGGER='~~'
 
 # export creds
 source ~/.creds.env
 
 source ~/.hisconfig
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

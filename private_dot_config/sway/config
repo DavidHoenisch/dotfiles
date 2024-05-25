@@ -53,7 +53,7 @@ input "1267:12573:ELAN0412:00_04F3:311D_Touchpad" {
 }
 
 
-input "1267:12573:ELAN0412:00_04F3:311D_Mouse" {
+input "12815:8195:PixArt_OpticalMouse" {
     natural_scroll enabled
 }
 #
