@@ -232,3 +232,5 @@ bindsym $mod+Escape exec /home/dhoenisch/.local/bin/lockscreen
 bindsym $mod+Return exec alacritty
 bindsym $mod+shift+b exec firefox
 
+
+for_window [class="screenkey"] floating enable

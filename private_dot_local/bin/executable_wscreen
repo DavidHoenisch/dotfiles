@@ -26,6 +26,7 @@ else
     # Set gaps configuration
     swaymsg gaps inner 10
     swaymsg gaps outer 15
+    sleep 1.5
 fi
 
 # Function to launch an application in a specific workspace
