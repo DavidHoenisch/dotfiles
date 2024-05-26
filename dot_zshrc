@@ -32,8 +32,7 @@ alias tls="tmux ls"
 alias tks="tmux kill-server"
 alias tt="timedatectl"
 alias nf="/bin/bash $HOME/.local/bin/nf"
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
 
 autoload -Uz compinit
 zstyle ':completion:*' menu select
@@ -60,3 +59,8 @@ source ~/.creds.env
 source ~/.hisconfig
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+source ~/.config/envman/PATH.env
+
