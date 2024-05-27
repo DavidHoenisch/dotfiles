@@ -12,6 +12,7 @@ neofetch
 #@DavidHoenisch
 #"""
 
+export EDITOR=nvim
 #
 #export $(cat ~/.env.creds|xargs)
 export PAGER="less"
@@ -27,12 +28,16 @@ alias lz="lazygit"
 alias zz="nvim $HOME/.zshrc"
 alias ref="source $HOME/.zshrc"
 alias cat="bat"
+# tmux binds
 alias ta="tmux attach-session -t"
 alias tls="tmux ls"
 alias tks="tmux kill-server"
+alias td="tmux detach"
+alias tfi="tmuxifier"
+
 alias tt="timedatectl"
 alias nf="/bin/bash $HOME/.local/bin/nf"
-
+alias oll="/bin/bash $HOME/.local/bin/oll"
 
 autoload -Uz compinit
 zstyle ':completion:*' menu select
@@ -44,12 +49,9 @@ eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd  zsh)"
 
 
-
 # added by Webi for pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PATH="$PATH:/home/dhoenisch/.local/share/bob/nvim-bin"
-
+export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
+export PATH="$PATH:$HOME/.tmux/plugins/tmuxifier/bin/"
 
 export FZF_COMPLETION_TRIGGER='~~'
 
@@ -62,5 +64,6 @@ source ~/.hisconfig
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-source ~/.config/envman/PATH.env
-
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+eval "$(tmuxifier init -)"
