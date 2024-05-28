@@ -50,3 +50,5 @@ launch_in_workspace "number 4" "/opt/google/chrome/google-chrome --profile-direc
 launch_in_workspace "number 5" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=ainjpeloaaccnmmdhgagjnfnfakjnnle"
 launch_in_workspace "number 6" "flatpak run org.telegram.desktop"
 launch_in_workspace "number 7" "flatpak run com.discordapp.Discord"
+launch_in_workspace "number 8" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=kmcnjdcipmgchfndpapkoecbidofdpbc"
+
