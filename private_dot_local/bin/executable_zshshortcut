@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+command=$(cat $HOME/.zshrc | rg "alias " | fzf | grep -oP "(?<==').*(?=')")
+
+exec $command
