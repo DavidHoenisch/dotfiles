@@ -67,3 +67,16 @@ source ~/.hisconfig
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 eval "$(tmuxifier init -)"
+
+
+# shortcut keys
+
+list_zsh_alias() {
+	local command="$HOME/.local/bin/zshshortcut"
+	eval $command
+}
+
+zle -N list_zsh_alias
+
+
+bindkey "^A" list_zsh_alias
