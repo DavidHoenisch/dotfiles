@@ -212,25 +212,27 @@ bindsym $mod+r mode "resize"
 # want to modify/override in the higher-level directory.
 #
 # For example, to disable the default bar from Fedora configs, you'll need to
-#     $ echo -n > "$HOME/.config/sway/config.d/90-bar.conf"
-#
-# Note the quoting, the $() and the arguments quoting. All the parts are equally
-# important to make the magic work. And if you want to learn the secret behind
-# the trick, it's all in the `wordexp(3)`.
-#
-include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+    #     $ echo -n > "$HOME/.config/sway/config.d/90-bar.conf"
+    #
+    # Note the quoting, the $() and the arguments quoting. All the parts are equally
+    # important to make the magic work. And if you want to learn the secret behind
+    # the trick, it's all in the `wordexp(3)`.
+    #
+    include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
 
 
-# custom 
+    # custom 
 
-for_window [class=".*"] border 3
+    for_window [class=".*"] border 3
 
 
-bindsym $mod+SHIFT+n exec /home/dhoenisch/.local/bin/kscreens
-bindsym $mod+SHIFT+w exec /home/dhoenisch/.local/bin/wscreen
-bindsym $mod+Escape exec /home/dhoenisch/.local/bin/lockscreen
-bindsym $mod+Return exec alacritty
-bindsym $mod+shift+b exec firefox
+    bindsym $mod+SHIFT+n exec /home/dhoenisch/.local/bin/kscreens
+    bindsym $mod+SHIFT+w exec /home/dhoenisch/.local/bin/wscreen
+    bindsym $mod+Escape exec /home/dhoenisch/.local/bin/lockscreen
+    bindsym $mod+Return exec alacritty
+    bindsym $mod+shift+b exec firefox
+    unbindsym Print
+    bindsym Print exec $HOME/.local/bin/screenshot.sh 
 
 
 for_window [class="screenkey"] floating enable
