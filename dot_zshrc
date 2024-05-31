@@ -75,5 +75,14 @@ list_zsh_alias() {
 
 zle -N list_zsh_alias
 
-
 bindkey "^A" list_zsh_alias
+
+
+start_ollama() {
+	local command="$HOME/.local/bin/oserve"
+	eval $command
+}
+
+zle -N start_ollama
+
+bindkey "^o" start_ollama
