@@ -483,6 +483,7 @@ require('lazy').setup({
         gopls = {},
         terraformls = {},
         actionlint = {},
+        -- yls = {},
         --pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
