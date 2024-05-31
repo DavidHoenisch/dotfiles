@@ -1,0 +1,3 @@
+#!/bin/bash
+
+OLLAMA_ORIGINS=app://obsidian.md* ollama serve
