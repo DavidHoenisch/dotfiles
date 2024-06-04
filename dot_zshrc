@@ -67,7 +67,6 @@ eval "$(tmuxifier init -)"
 
 
 # shortcut keys
-
 list_zsh_alias() {
 	local command="$HOME/.local/bin/zshshortcut"
 	eval $command
@@ -86,3 +85,12 @@ start_ollama() {
 zle -N start_ollama
 
 bindkey "^o" start_ollama
+
+search_open_nvim() {
+	local command="$HOME/.local/bin/nf"
+	eval $command
+}
+
+zle -N search_open_nvim
+
+bindkey "^f" search_open_nvim
