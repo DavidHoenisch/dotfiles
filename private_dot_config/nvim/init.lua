@@ -483,7 +483,6 @@ require('lazy').setup({
         terraformls = {},
         actionlint = {},
         glow = {},
-        markdownlint = {},
         bashls = {},
         -- yls = {},
         --pyright = {},
