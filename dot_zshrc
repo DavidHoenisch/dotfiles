@@ -98,9 +98,15 @@ bindkey "^w" what_script
 
 # Snippets manager
 
-pets() {
-	print -z $(pet search $* )
+pet_search_and_run() {
+	local command="$HOME/.local/bin/pets"
+	eval $command
 }
+
+zle -N pet_search_and_run
+bindkey "^p" pet_search_and_run
 
 
 $HOME/.local/bin/tl
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
