@@ -21,3 +21,5 @@ go install github.com/charmbracelet/glow@latest
 go install github.com/brimdata/zed/cmd/{zed,zq}@latest
 go install github.com/charmbracelet/vhs@latest
 go install github.com/charmbracelet/gum@latest
+go install -v github.com/projectdiscovery/pdtm/cmd/pdtm@latest
+
