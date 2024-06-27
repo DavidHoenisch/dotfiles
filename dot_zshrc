@@ -26,7 +26,7 @@ alias tfi="tmuxifier"
 alias tt="timedatectl"
 alias nf="/bin/bash $HOME/.local/bin/nf"
 alias oll="/bin/bash $HOME/.local/bin/oll"
-
+alias sp="ps aux | fzf"
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc

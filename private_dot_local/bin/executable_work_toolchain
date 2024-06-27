@@ -1,8 +1,10 @@
 #!/bin/bash
 
+echo "run with sudo -E"
+
 
 # Terroform tools
-/home/dhoenisch/.local/opt/go/bin/go install github.com/Azure/aztfexport@latest
+go install github.com/Azure/aztfexport@latest
 
 
 # Azure-CLI

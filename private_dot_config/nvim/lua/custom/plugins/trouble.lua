@@ -6,5 +6,5 @@ return {
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
   },
-  vim.api.nvim_set_keymap('n', '<leader>tt', ':TroubleToggle<CR>', { silent = true, noremap = true }),
+  vim.api.nvim_set_keymap('n', '<leader>tt', ':Trouble diagnostics toggle<CR>', { silent = true, noremap = true }),
 }

@@ -20,3 +20,4 @@ go install -v github.com/sigstore/rekor/cmd/rekor-cli@latest
 go install github.com/charmbracelet/glow@latest
 go install github.com/brimdata/zed/cmd/{zed,zq}@latest
 go install github.com/charmbracelet/vhs@latest
+go install github.com/charmbracelet/gum@latest
