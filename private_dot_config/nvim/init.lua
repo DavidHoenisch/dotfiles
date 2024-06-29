@@ -484,6 +484,7 @@ require('lazy').setup({
         actionlint = {},
         glow = {},
         bashls = {},
+        nimlangserver = {},
         -- yls = {},
         --pyright = {},
         -- rust_analyzer = {},
