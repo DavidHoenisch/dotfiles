@@ -1,0 +1,5 @@
+Host nucamp
+	HostName 192.155.87.156
+	User root
+	IdentityFile ~/.ssh/nucamp
+	IdentitiesOnly yes
