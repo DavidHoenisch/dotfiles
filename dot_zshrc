@@ -23,6 +23,7 @@ alias tls="tmux ls"
 alias tks="tmux kill-server"
 alias td="tmux detach"
 alias tfi="tmuxifier"
+alias rn="ranger"
 
 alias tt="timedatectl"
 alias nf="/bin/bash $HOME/.local/bin/nf"
