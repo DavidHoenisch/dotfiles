@@ -23,7 +23,7 @@ set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
-output * bg /home/dhoenisch/Pictures/Wallpapers/wallpaper-alt3.jpg fill
+output * bg /home/dhoenisch/Pictures/Wallpapers/wallpaper-alt5.jpg fill
 #
 # Example configuration:
 #
@@ -221,9 +221,27 @@ bindsym $mod+r mode "resize"
     include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
 
 
-    # custom 
+# Declare Colors:
+    set $background #332b2b
+    set $color_urgent #fb4934
+    set $text_color #ffffff
+    set $title_bg_unfocused #00000000 
+    set $title_outline_active #2aa198  
+    set $title_outline_unfocused #00000000
 
-    for_window [class=".*"] border 3
+    # Set Colors:           Border                   Background          Text          Indicator             Child Border
+    client.background       $background
+    client.focused          $title_outline_active    $background         $text_color   $title_outline_active $title_outline_active
+    client.focused_inactive $title_outline_unfocused $background         $text_color   $text_color           $title_outline_unfocused
+    client.unfocused        $title_outline_unfocused $title_bg_unfocused $text_color   $title_outline_active
+    client.urgent           $color_urgent            $color_urgent       $color_urgent $color_urgent         $color_urgent
+
+    # Add gaps in between all application windows:
+    gaps inner 8
+    gaps outer 3
+
+    # Configure the default border:
+    default_border pixel 2
 
 
     bindsym $mod+SHIFT+n exec /home/dhoenisch/.local/bin/kscreens

@@ -79,7 +79,10 @@ sudo apt install -y \
     zsh \ 
     pipx \
     ranger \
-    parallel
+    parallel \ 
+    podman \ 
+    minikube \
+
 
 
 
