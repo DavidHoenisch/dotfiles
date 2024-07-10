@@ -22,4 +22,5 @@ go install github.com/brimdata/zed/cmd/{zed,zq}@latest
 go install github.com/charmbracelet/vhs@latest
 go install github.com/charmbracelet/gum@latest
 go install -v github.com/projectdiscovery/pdtm/cmd/pdtm@latest
-
+go install sigs.k8s.io/kind@v0.23.0
+go install github.com/go-task/task/v3/cmd/task@latest

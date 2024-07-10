@@ -2,3 +2,8 @@
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+
+# Added by Toolbox App
+export PATH="$PATH:/home/dhoenisch/.local/share/JetBrains/Toolbox/scripts"
+

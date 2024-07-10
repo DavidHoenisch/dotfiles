@@ -248,9 +248,14 @@ bindsym $mod+r mode "resize"
     bindsym $mod+SHIFT+w exec /home/dhoenisch/.local/bin/wscreen
     bindsym $mod+Escape exec /home/dhoenisch/.local/bin/lockscreen
     bindsym $mod+Return exec alacritty
-    bindsym $mod+shift+b exec firefox
+    bindsym $mod+shift+b exec gtk-launch /usr/share/applications/brave-browser.desktop
     unbindsym Print
     bindsym Print exec $HOME/.local/bin/screenshot.sh 
 
 
 for_window [class="screenkey"] floating enable
+
+bindsym $mod+Control+Shift+Right move workspace to output right
+bindsym $mod+Control+Shift+Left move workspace to output left
+bindsym $mod+Control+Shift+Down move workspace to output down
+bindsym $mod+Control+Shift+Up move workspace to output up
