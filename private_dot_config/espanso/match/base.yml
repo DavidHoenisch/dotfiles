@@ -37,4 +37,20 @@ matches:
         params:
           cmd: "echo 'Hello from your shell'"
 
+  - trigger: ":cbs"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: echo 
+        params:
+          echo: "```shell\n"
+          
+
+  - trigger: ":self"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: echo 
+        params:
+          echo: "David Hoenisch"
   # And much more! For more information, visit the docs: https://espanso.org/docs/

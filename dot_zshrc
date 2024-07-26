@@ -19,6 +19,8 @@ alias cat="bat"
 alias cc="/bin/cat"
 alias c="/bin/cd"
 alias copy="fc -ln -1|wl-copy"
+alias gr="goreleaser"
+alias rm="echo Use 'rip' instead of rm."
 
 # tmux binds
 alias ta="tmux attach-session -t"
@@ -30,7 +32,7 @@ alias rn="ranger"
 
 alias tt="timedatectl"
 alias nf="/bin/bash $HOME/.local/bin/nf"
-alias oll="/bin/bash $HOME/.local/bin/oll"
+alias oll="/bin/bash $HOME/.local/bin/oserve"
 alias sp="ps aux | fzf"
 autoload -Uz compinit
 zstyle ':completion:*' menu select
@@ -166,4 +168,8 @@ alias fz='fuz --sorttime'
 alias fze='fuz --edit'
 alias fzd='fuz --dir-search'
 export FUZ_EDITOR=nvim
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
 

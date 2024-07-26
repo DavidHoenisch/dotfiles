@@ -7,3 +7,5 @@
 # Added by Toolbox App
 export PATH="$PATH:/home/dhoenisch/.local/share/JetBrains/Toolbox/scripts"
 
+
+. "$HOME/.atuin/bin/env"
