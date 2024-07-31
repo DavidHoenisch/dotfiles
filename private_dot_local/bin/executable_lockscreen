@@ -1,5 +1,0 @@
-#!/bin/bash
-
-IMAGE_PATH=~/Pictures/Wallpapers/lockscreen-wallpaper.jpg
-
-swaylock -i $IMAGE_PATH
