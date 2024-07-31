@@ -44,8 +44,8 @@ launch_in_workspace() {
 
 # Launch applications in specific workspaces
 launch_in_workspace "number 1" "kitty"
-launch_in_workspace "number 2" "gtk-launch /usr/share/applications/brave-browser.desktop"
-launch_in_workspace "number 3" "flatpak run com.bitwarden.desktop"
+launch_in_workspace "number 2" "exec /usr/bin/brave-browser-stable"
+launch_in_workspace "number 3" "/home/dhoenisch/.nix-profile/bin/bitwarden"
 launch_in_workspace "number 4" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo"
 launch_in_workspace "number 5" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=ainjpeloaaccnmmdhgagjnfnfakjnnle"
 launch_in_workspace "number 6" "flatpak run org.telegram.desktop"

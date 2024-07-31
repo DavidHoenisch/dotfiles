@@ -1,5 +1,3 @@
-
-
 export EDITOR=nvim
 #
 #export $(cat ~/.env.creds|xargs)
@@ -75,7 +73,7 @@ eval "$(tmuxifier init -)"
 
 # shortcut keys
 list_zsh_alias() {
-	local command="$HOME/.local/bin/zshshortcut"
+	local command="$HOME/.local/bin/what/zshshortcut"
 	eval $command
 }
 
@@ -85,7 +83,7 @@ bindkey "^A" list_zsh_alias
 
 
 start_ollama() {
-	local command="$HOME/.local/bin/oserve"
+	local command="$HOME/.local/bin/what/oserve"
 	eval $command
 }
 
@@ -94,7 +92,7 @@ zle -N start_ollama
 bindkey "^o" start_ollama
 
 search_open_nvim() {
-	local command="$HOME/.local/bin/nf"
+	local command="$HOME/.local/bin/custom/nf"
 	eval $command
 }
 
@@ -104,7 +102,7 @@ bindkey "^f" search_open_nvim
 
 
 what_script() {
-	local command="$HOME/.local/bin/what"
+	local command="$HOME/.local/bin/custom/what"
 	eval $command
 }
 
@@ -115,7 +113,7 @@ bindkey "^w" what_script
 # Snippets manager
 
 pet_search_and_run() {
-	local command="$HOME/.local/bin/pets"
+	local command="$HOME/.local/bin/custom/pets"
 	eval $command
 }
 
@@ -173,3 +171,13 @@ export FUZ_EDITOR=nvim
 
 eval "$(atuin init zsh)"
 
+export PATH="$PATH:$HOME/.local/bin/custom/"
+
+
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+
+# age encryption #
+export AGE_PUB_KEY=$(grep 'public key' $HOME/.config/sops/age/keys.txt | cut -d' ' -f 4)
