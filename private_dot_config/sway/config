@@ -23,7 +23,7 @@ set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
-output * bg /home/dhoenisch/Pictures/Wallpapers/wallpaper-alt5.jpg fill
+output * bg /home/dhoenisch/Pictures/Wallpapers/ai-landscape.jpg fill
 #
 # Example configuration:
 #
@@ -247,7 +247,7 @@ bindsym $mod+r mode "resize"
     bindsym $mod+SHIFT+n exec /home/dhoenisch/.local/bin/kscreens
     bindsym $mod+SHIFT+w exec /home/dhoenisch/.local/bin/wscreen
     bindsym $mod+Escape exec /home/dhoenisch/.local/bin/lockscreen
-    bindsym $mod+Return exec alacritty
+    bindsym $mod+Return exec $term
     bindsym $mod+shift+b exec gtk-launch /usr/share/applications/brave-browser.desktop
     unbindsym Print
     bindsym Print exec $HOME/.local/bin/screenshot.sh 

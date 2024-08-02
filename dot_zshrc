@@ -55,7 +55,6 @@ export FZF_COMPLETION_TRIGGER='~~'
 # Kubernetes Configs #
 ######################
 
-export KIND_EXPERIMENTAL_PROVIDER=podman
 
 # export creds
 source ~/.creds.env
