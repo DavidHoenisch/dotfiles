@@ -1,5 +1,6 @@
 export EDITOR=nvim
-#
+
+source ~/.goprivate
 #export $(cat ~/.env.creds|xargs)
 export PAGER="less"
 
@@ -19,6 +20,7 @@ alias c="/bin/cd"
 alias copy="fc -ln -1|wl-copy"
 alias gr="goreleaser"
 alias rm="echo Use 'rip' instead of rm."
+alias cst="container-structure-test"
 
 # tmux binds
 alias ta="tmux attach-session -t"
@@ -28,8 +30,15 @@ alias td="tmux detach"
 alias tfi="tmuxifier"
 alias rn="ranger"
 
+# This is a terrible idea
+alias kind="sudo -E kind"
+alias kubectl="sudo -E kubectl"
+alias k9s="sudo -E $HOME/.nix-profile/bin/k9s"
+alias skaffold="sudo -E /home/dhoenisch/.nix-profile/bin/skaffold"
+alias helm="sudo -E $HOME/.nix-profile/bin/helm"
+
 alias tt="timedatectl"
-alias nf="/bin/bash $HOME/.local/bin/nf"
+alias nf="/bin/bash $HOME/.local/bin/custom/nf"
 alias oll="/bin/bash $HOME/.local/bin/oserve"
 alias sp="ps aux | fzf"
 autoload -Uz compinit
@@ -60,6 +69,7 @@ export FZF_COMPLETION_TRIGGER='~~'
 source ~/.creds.env
 
 source ~/.hisconfig
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -98,7 +108,6 @@ search_open_nvim() {
 zle -N search_open_nvim
 
 bindkey "^f" search_open_nvim
-
 
 what_script() {
 	local command="$HOME/.local/bin/custom/what"
@@ -180,3 +189,7 @@ export LC_ALL=en_US.UTF-8
 
 # age encryption #
 export AGE_PUB_KEY=$(grep 'public key' $HOME/.config/sops/age/keys.txt | cut -d' ' -f 4)
+
+# required for avoiding locale errors in nix-env
+export LOCALE_ARCHIVE="$(nix-env --installed --no-name --out-path --query glibc-locales)/lib/locale/locale-archive"
+source <(fx --comp zsh)
