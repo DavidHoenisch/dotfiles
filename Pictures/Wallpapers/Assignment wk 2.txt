@@ -1,0 +1,32 @@
+﻿Assignment week 3 (Written Summary)
+Task 1
+We Discussed The NotPetya attacks, the damages and procedures and Remediation taken after. 
+And we look at how the Eternalblue Exploit and Mimikatz.
+
+
+Task 2
+Proper Access Control.
+
+
+Task 3
+
+
+Immediate Containment.
+Disconnecting, every infected machines.
+Assessment and Analysis.
+
+
+
+
+Recommendations to Prevent Attacks like Notpeya attacks will be.
+Patch Management.
+Regularly update and Patch systems and Software to Fix vulnerabilities.
+Network Segmentation.
+Advance Endpoint Protection.
+
+
+2.
+Security Measures are very Key, and should not be taken likely nationally. All proper attention should be given to it. It is Safety for humanity at  large. 
+
+
+Access Control and Security Control
