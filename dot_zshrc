@@ -21,6 +21,8 @@ alias copy="fc -ln -1|wl-copy"
 alias gr="goreleaser"
 alias rm="echo Use 'rip' instead of rm."
 alias cst="container-structure-test"
+alias n="nvim"
+
 
 # tmux binds
 alias ta="tmux attach-session -t"
@@ -36,6 +38,9 @@ alias kubectl="sudo -E kubectl"
 alias k9s="sudo -E $HOME/.nix-profile/bin/k9s"
 alias skaffold="sudo -E /home/dhoenisch/.nix-profile/bin/skaffold"
 alias helm="sudo -E $HOME/.nix-profile/bin/helm"
+alias act="DOCKER_HOST=unix:///run/user/1000/podman/podman.sock sudo -E $HOME/.nix-profile/bin/act"
+
+
 
 alias tt="timedatectl"
 alias nf="/bin/bash $HOME/.local/bin/custom/nf"
@@ -82,7 +87,7 @@ eval "$(tmuxifier init -)"
 
 # shortcut keys
 list_zsh_alias() {
-	local command="$HOME/.local/bin/what/zshshortcut"
+	local command="$HOME/.local/bin/custom/zshshortcut"
 	eval $command
 }
 
@@ -92,7 +97,7 @@ bindkey "^A" list_zsh_alias
 
 
 start_ollama() {
-	local command="$HOME/.local/bin/what/oserve"
+	local command="$HOME/.local/bin/custom/oserve"
 	eval $command
 }
 
@@ -141,7 +146,6 @@ bindkey "^e" restart_espanso
 
 $HOME/.local/bin/tl
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 
 # Generated for pdtm. Do not edit.
@@ -168,6 +172,21 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
+
+function kubectlgetall {
+  for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
+    echo "Resource:" $i
+    
+    if [ -z "$1" ]
+    then
+        kubectl get --ignore-not-found ${i}
+    else
+        kubectl -n ${1} get --ignore-not-found ${i}
+    fi
+  done
+}
+
+
 # setting for fuz
 alias fuz='/home/dhoenisch/.local/bin/fuz --path "/home/dhoenisch/Documents/Personal"'
 alias fz='fuz --sorttime'
@@ -180,6 +199,9 @@ export FUZ_EDITOR=nvim
 eval "$(atuin init zsh)"
 
 export PATH="$PATH:$HOME/.local/bin/custom/"
+export ATAC_KEY_BINDINGS=/home/dhoenisch/.config/atac/vim_key_bindings.toml
+export ATAC_MAIN_DIR=/home/dhoenisch/.config/atac/
+
 
 
 export LANG=en_US.UTF-8
