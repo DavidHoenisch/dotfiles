@@ -17,7 +17,69 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
+    portal
+    devpod
+    termshark
+    poetry
+    act
+    serpl
+    fx
+    tmux
+    gomarkdoc
+    linode-cli
+    kompose
+    container-structure-test
+    ripgrep
+    skaffold
+    grpcurl
+    syft
+    alacritty
+    glibcLocales
+    neovim
+    ko
+    amber-lang
+    kubernetes-helm
+    sops
+    python312Packages.pip
+    jitsi-meet-electron
+    go-task
+    flyctl
+    age
+    zoxide
+    hoard
+    btop
+    bat
+    brave
+    atuin
+    python3
+    ffmpeg
+    okular
+    insomnia
+    signal-desktop
+    podman-desktop
+    docker
+    k9s
+    podman
+    kind
+    bitwarden-desktop
+    watchexec
+    pet
+    skim
+    nomad
+    telegram-desktop
+    discord
+    yazi
+    gotools
+    go
+    pyenv
+    ollama
+    yq
+    gh
+    xsv
+    pandoc
+    nodejs
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
