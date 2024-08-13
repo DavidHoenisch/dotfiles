@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-40.noarch.rpm
+sudo dnf install v4l2loopback kmod-v4l2loopback
+sudo modprobe v4l2loopback devices=1 max_buffers=2 exclusive_caps=1 card_label="VirtualCam"
+

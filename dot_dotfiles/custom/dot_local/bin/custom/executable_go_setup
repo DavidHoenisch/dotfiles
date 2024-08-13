@@ -1,0 +1,28 @@
+#!/bin/bash
+go install github.com/projectdiscovery/cvemap/cmd/cvemap@latest
+go install -v github.com/projectdiscovery/notify/cmd/notify@latest
+go install -v github.com/projectdiscovery/naabu/cmd/naabu@latest
+go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
+go install -v github.com/projectdiscovery/chaos-client/cmd/chaos@latest
+go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+go install -v github.com/projectdiscovery/cdncheck/cmd/cdncheck@latest
+go install -v github.com/projectdiscovery/proxify/cmd/proxify@latest
+go install github.com/spf13/cobra-cli@latest
+go install github.com/EpykLab/ipcheck@latest
+go install github.com/melkeydev/go-blueprint@latest
+go install github.com/mistakenelf/fm@latest
+go install github.com/sigstore/cosign/v2/cmd/cosign@latest
+go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow@latest
+go install github.com/jesseduffield/lazygit@latest
+go install github.com/aquasecurity/tfsec/cmd/tfsec@latest
+go install github.com/sigstore/gitsign@latest
+go install -v github.com/sigstore/rekor/cmd/rekor-cli@latest
+go install github.com/charmbracelet/glow@latest
+go install github.com/brimdata/zed/cmd/{zed,zq}@latest
+go install github.com/charmbracelet/vhs@latest
+go install github.com/charmbracelet/gum@latest
+go install -v github.com/projectdiscovery/pdtm/cmd/pdtm@latest
+go install sigs.k8s.io/kind@v0.23.0
+go install github.com/go-task/task/v3/cmd/task@latest
+go install github.com/atombender/go-jsonschema@latest
+go install github.com/swaggo/swag/cmd/swag@latest

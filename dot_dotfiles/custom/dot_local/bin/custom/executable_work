@@ -1,0 +1,28 @@
+#!/bin/bash
+
+swaymsg "workspace number 1"
+swaymsg "exec alacritty"
+sleep 1
+
+swaymsg "workspace number 2"
+swaymsg "exec firefox"
+sleep 1
+
+swaymsg "workspace number 3"
+swaymsg "exec flatpak run com.bitwarden.desktop"
+sleep 1
+
+swaymsg "workspace number 4"
+swaymsg "exec /usr/lib/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo"
+sleep 1
+
+swaymsg "workspace number 5"
+swaymsg "exec /usr/lib/opt/google/chrome/google-chrome --profile-directory=Default --app-id=ainjpeloaaccnmmdhgagjnfnfakjnnle"
+sleep 1
+
+swaymsg "workspace number 6"
+swaymsg "exec flatpak run org.telegram.desktop"
+sleep 1
+
+swaymsg "workspace number 7"
+swaymsg "exec flatpak run com.discordapp.Discord"
