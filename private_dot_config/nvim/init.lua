@@ -71,6 +71,10 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Spell check
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -866,6 +870,27 @@ require("lazy").setup({
 		},
 	},
 })
+
+function Csv_To_Markdown()
+	local csv_path = vim.fn.input("Enter CSV file path: ")
+	if csv_path ~= "" then
+		local home_dir = vim.fn.expand("$HOME")
+		local script_path = home_dir .. "/.local/bin/csv_to_markdown_table.py"
+		local command = string.format("/usr/bin/python3.12 %s %s", script_path, csv_path)
+		-- Capture the standard output as a list of strings
+		local output_content = vim.fn.systemlist(command)
+
+		-- Insert the content into the current buffer
+		vim.api.nvim_put(output_content, "l", true, true)
+	else
+		print("CSV file path cannot be empty.")
+	end
+end
+
+vim.cmd([[
+    command! CsvToMarkdown lua Csv_To_Markdown()
+    nnoremap <Leader>mt :CsvToMarkdown<CR>
+]])
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
