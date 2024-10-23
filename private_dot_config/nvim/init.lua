@@ -270,7 +270,11 @@ require("lazy").setup({
 				--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
 				--   },
 				-- },
-				-- pickers = {}
+				pickers = {
+					find_files = {
+						hidden = true,
+					},
+				},
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
@@ -720,19 +724,19 @@ require("lazy").setup({
 	{ "folke/tokyonight.nvim" },
 	{ "ellisonleao/gruvbox.nvim" },
 	{ "rose-pine/neovim" },
+	{ "catppuccin/nvim" },
 	{ -- You can easily change to a different colorscheme.
 		-- Change the name of the colorscheme plugin below, and then
 		-- change the command in the config to whatever the name of that colorscheme is.
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-
-		"catppuccin/nvim",
+		"rebelot/kanagawa.nvim",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		init = function()
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("catppuccin")
+			vim.cmd.colorscheme("kanagawa-dragon")
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.hi("Comment gui=none")
@@ -892,5 +896,41 @@ vim.cmd([[
     nnoremap <Leader>mt :CsvToMarkdown<CR>
 ]])
 
+local wk = require("which-key")
+
+wk.add({
+	{ "<leader>g", group = "+Git" },
+	{ "<leader>gh", group = "+Github" },
+	{ "<leader>ghc", group = "+Commits" },
+	{ "<leader>ghcc", "<cmd>GHCloseCommit<cr>", desc = "Close" },
+	{ "<leader>ghce", "<cmd>GHExpandCommit<cr>", desc = "Expand" },
+	{ "<leader>ghco", "<cmd>GHOpenToCommit<cr>", desc = "Open To" },
+	{ "<leader>ghcp", "<cmd>GHPopOutCommit<cr>", desc = "Pop Out" },
+	{ "<leader>ghcz", "<cmd>GHCollapseCommit<cr>", desc = "Collapse" },
+	{ "<leader>ghi", group = "+Issues" },
+	{ "<leader>ghip", "<cmd>GHPreviewIssue<cr>", desc = "Preview" },
+	{ "<leader>ghl", group = "+Litee" },
+	{ "<leader>ghlt", "<cmd>LTPanel<cr>", desc = "Toggle Panel" },
+	{ "<leader>ghr", group = "+Review" },
+	{ "<leader>ghrb", "<cmd>GHStartReview<cr>", desc = "Begin" },
+	{ "<leader>ghrc", "<cmd>GHCloseReview<cr>", desc = "Close" },
+	{ "<leader>ghrd", "<cmd>GHDeleteReview<cr>", desc = "Delete" },
+	{ "<leader>ghre", "<cmd>GHExpandReview<cr>", desc = "Expand" },
+	{ "<leader>ghrs", "<cmd>GHSubmitReview<cr>", desc = "Submit" },
+	{ "<leader>ghrz", "<cmd>GHCollapseReview<cr>", desc = "Collapse" },
+	{ "<leader>ghp", group = "+Pull Request" },
+	{ "<leader>ghpc", "<cmd>GHClosePR<cr>", desc = "Close" },
+	{ "<leader>ghpd", "<cmd>GHPRDetails<cr>", desc = "Details" },
+	{ "<leader>ghpe", "<cmd>GHExpandPR<cr>", desc = "Expand" },
+	{ "<leader>ghpo", "<cmd>GHOpenPR<cr>", desc = "Open" },
+	{ "<leader>ghpp", "<cmd>GHPopOutPR<cr>", desc = "PopOut" },
+	{ "<leader>ghpr", "<cmd>GHRefreshPR<cr>", desc = "Refresh" },
+	{ "<leader>ghpt", "<cmd>GHOpenToPR<cr>", desc = "Open To" },
+	{ "<leader>ghpz", "<cmd>GHCollapsePR<cr>", desc = "Collapse" },
+	{ "<leader>ght", group = "+Threads" },
+	{ "<leader>ghtc", "<cmd>GHCreateThread<cr>", desc = "Create" },
+	{ "<leader>ghtn", "<cmd>GHNextThread<cr>", desc = "Next" },
+	{ "<leader>ghtt", "<cmd>GHToggleThread<cr>", desc = "Toggle" },
+})
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

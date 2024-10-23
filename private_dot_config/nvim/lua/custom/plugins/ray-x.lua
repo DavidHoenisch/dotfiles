@@ -17,4 +17,6 @@ return {
 	-- shortcuts for ray-x
 	vim.api.nvim_set_keymap("n", "<leader>ggi", ":GoImports<CR>", { silent = true, noremap = true }),
 	vim.api.nvim_set_keymap("n", "<leader>ggf", ":GoFmt<CR>", { silent = true, noremap = true }),
-	vim.api.nvim_set_keymap("n", "<leader>gge", ":GoIfErr<CR>", { silent = true, noremap = true })
+	vim.api.nvim_set_keymap("n", "<leader>gge", ":GoIfErr<CR>", { silent = true, noremap = true }),
+	vim.api.nvim_set_keymap("n", "<leader>ggs", ":GoFillStruct<CR>", { silent = true, noremap = true }),
+	vim.api.nvim_set_keymap("n", "<leader>ggI", ":GoImplements<CR>", { silent = true, noremap = true })

@@ -1,5 +1,22 @@
+# DevPod Start checkmate.devpod
+Host checkmate.devpod
+  ForwardAgent yes
+  LogLevel error
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  HostKeyAlgorithms rsa-sha2-256,rsa-sha2-512,ssh-rsa
+  ProxyCommand "/nix/store/ncyykna0dmfarswx287brh651mdpgjmi-devpod-0.5.16/bin/devpod" ssh --stdio --context default --user vscode checkmate
+  User vscode
+# DevPod End checkmate.devpod
+
 Host nucamp
-	HostName 192.155.87.156
-	User root
-	IdentityFile ~/.ssh/nucamp
-	IdentitiesOnly yes
+  HostName 192.155.87.156
+  User root
+  IdentityFile ~/.ssh/nucamp
+  IdentitiesOnly yes
+
+Host book
+  Hostname 172.233.152.171
+  User me 
+  IdentityFile ~/.ssh/id_ed25519
+  IdentitiesOnly yes

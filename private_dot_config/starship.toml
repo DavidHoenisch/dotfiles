@@ -79,7 +79,6 @@ disabled = false
 style = "bold white"
 format = "[$time]($style)"
 
-
 [custom.stunnel]
 when = "ps aux | grep stunnel | grep -v grep"
 command = "ps -o etime= -p $(ps aux | grep stunnel | grep -v grep | awk '{print $2}')"

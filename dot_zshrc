@@ -126,7 +126,7 @@ bindkey "^w" what_script
 # Snippets manager
 
 pet_search_and_run() {
-	local command="$HOME/.local/bin/custom/pets"
+	local command="$HOME/.local/bin/pet"
 	eval $command
 }
 
@@ -201,6 +201,11 @@ eval "$(atuin init zsh)"
 export PATH="$PATH:$HOME/.local/bin/custom/"
 export ATAC_KEY_BINDINGS=/home/dhoenisch/.config/atac/vim_key_bindings.toml
 export ATAC_MAIN_DIR=/home/dhoenisch/.config/atac/
+
+
+# custom completions
+source ~/.zsh_completions/_chx
+
 
 
 

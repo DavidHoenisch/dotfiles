@@ -1,5 +1,3 @@
 return {
-	"akinsho/toggleterm.nvim",
-
-	config = function() end,
+	"numToStr/FTerm.nvim",
 }
