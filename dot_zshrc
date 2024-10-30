@@ -46,7 +46,7 @@ alias tt="timedatectl"
 alias nf="/bin/bash $HOME/.local/bin/custom/nf"
 alias oll="/bin/bash $HOME/.local/bin/oserve"
 alias sp="ps aux | fzf"
-autoload -Uz compinit
+autoload -U compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
 
@@ -176,7 +176,7 @@ function yy() {
 function kubectlgetall {
   for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
     echo "Resource:" $i
-    
+
     if [ -z "$1" ]
     then
         kubectl get --ignore-not-found ${i}

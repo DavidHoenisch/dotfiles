@@ -879,8 +879,8 @@ function Csv_To_Markdown()
 	local csv_path = vim.fn.input("Enter CSV file path: ")
 	if csv_path ~= "" then
 		local home_dir = vim.fn.expand("$HOME")
-		local script_path = home_dir .. "/.local/bin/csv_to_markdown_table.py"
-		local command = string.format("/usr/bin/python3.12 %s %s", script_path, csv_path)
+		local script_path = home_dir .. "/.local/bin/csv2markdown"
+		local command = string.format("%s %s", script_path, csv_path)
 		-- Capture the standard output as a list of strings
 		local output_content = vim.fn.systemlist(command)
 
