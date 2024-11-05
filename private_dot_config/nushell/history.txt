@@ -1,0 +1,231 @@
+ls
+ls | where filetype == file
+ls | where type == file
+clear
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
+nvim 
+nvim ~/.config/nushell/config.nu
+exit
+clear
+nvim ~/.cache/starship/init.nu
+cd plugins
+cd ~/.config/nvim/lua/custom/plugins/
+ls
+nvim nushell.lua
+nvim
+nvim ~/.config/nushell/config.nu
+nvim nushell.lua
+nvim
+nvim ~/.config/nushell/config.nu
+nvim nushell.lua
+nvim ~/.config/nushell/config.nu
+ls
+ls 
+rip nushell.lua
+nvim ~/.config/nushell/config.nu
+nvim ~/.config/nushell/env.nu
+nvim ~/.config/nushell/config.nu
+nvim ~/.zshrc
+nvim ~/.config/nushell/env.nu
+nvim ~/.config/nushell/config.nu
+exit
+cd Github
+nvim ~/.zoxide.nu
+zoxide Github
+z Github
+nvim ~/.config/nushell/config.nu
+source ~/.config/nushell/config.nu
+cd drive
+exit
+cd drive
+nvim ~/.config/nushell/config.nu
+source ~/.config/nushell/config.nu
+cd drive
+nix-env -iA nixpkgs.caraspace
+nix-env -iA nixpkgs.carapace
+nvim ~/.config/nushell/config.nu
+nvim ~/.config/nushell/env.nu
+exit
+nu
+exti
+exit
+clear
+ls
+exit
+ls
+cd drive
+ls
+az account show
+ls
+az account show
+az account show|environment
+clear
+ls
+whoami
+az account show|from json
+ls
+cat "workshop 2.txt" 
+cat "workshop 2.txt" | to string
+cat "workshop 2.txt" | to
+cat "workshop 2.txt" | to text
+chx
+./chx ip crowdsec 39.98.85.230 --format true
+chx ip crowdsec 39.98.85.230 --format true
+chx ip crowdsec 39.98.85.230 --format true|glow
+"39.98.85.230" | chx ip crowdsec --format true
+"39.98.85.230" | chx ip crowdsec
+ls
+let df = (dfr open exportUsers_2024-8-14.csv)
+open exportUsers_2024-8-14.csv|shape
+env
+$env
+help commands
+help commands | grep dataframe
+help search
+help commands
+help commands | find dataframe
+help commands | find Dataframe
+exit
+clear
+shell
+env
+config env
+exit
+clear
+config env
+config conf
+config help
+help config
+config nu
+[ nu_plugin_inc<\n>  nu_plugin_polars<\n>  nu_plugin_gstat<\n>  nu_plugin_formats<\n>  nu_plugin_query<\n>] | each { cargo install $in } | ignore
+clear
+polars
+port
+help port
+ps
+ps | where mem > 0
+ps | where $nu.pip | get ppip
+ps | where $nu.pip | get ppid
+ps | where $nu.pid | get ppid
+ps | where pid == $nu.pid | get ppid
+ps | where pid == $nu.pid | get ppid | copy
+exit
+ls
+open devices.csv
+conf
+exit
+clear
+ls
+clear
+config env
+config nu
+date
+time
+date time
+date now
+date to-table
+date now to-table
+date humanize 
+date now
+date now | date to-table
+date now | date humanize
+date now | date timezone
+date now | date to-timezone
+atuin import shell
+atuin import auto
+atuin import nu
+exit
+clear
+atuin init nu | save -f ~/.local/share/atuin/init.nu
+source ~/.local/share/atuin/init.nu
+nu env
+config env
+config nu
+config env
+exit
+clear
+mkdir ~/.local/share/atuin/<\n>atuin init nu | save ~/.local/share/atuin/init.nu
+config nu
+exit
+nu
+ls
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | where vendorProject == Microsft
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | to table
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | from json
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | where vendorProject == "Microsft"
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | get vulnerabilities
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | get vulnerabilities | where vendorProject == "Microsft"
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | get vulnerabilities | where vendorProject == "Microsoft"
+lsd
+ls
+ls | where type == file
+ls | where type == file | where size < 21.y
+ls | where type == file | where size < 21.7
+ls | where type == file | where size < 21
+ls | where type == file | where size < 21mb
+ls | where type == file | where size > 21mb
+du
+ls **/*
+ls **/* | to csv
+clear
+ps
+sys
+sys | get host | get sessions
+sys | get host
+sys 
+sys net
+sys mem
+sys mem | to csv
+enter /etc/hosts
+enter /etc
+ls
+cd 
+open /etc/hosts| to table
+open /etc/hosts| line
+open /etc/hosts| lines
+open /etc/hosts| table
+open /etc/hosts| columns
+open /etc/hosts| to-table
+nu help
+help
+help --find table
+open /etc/hosts| table
+open /etc/hosts| detect columns
+open /etc/hosts| detect columns | table
+open /etc/hosts| select -2 | detect columns | table
+open /etc/hosts| skip 1 | detect columns | table
+open /etc/hosts | skip 1 | detect columns | table
+open /etc/hosts | detect columns | table
+open /etc/hosts 
+open /etc/hosts | skip 1 | detect columns | table
+cat /etc/hosts
+cat /etc/hosts | skip 1
+open /etc/hosts | into string 
+open /etc/hosts | into string | skip 1
+cat /etc/hosts | lines
+cat /etc/hosts | lines | skip 1
+cat /etc/hosts | lines | skip 2 | detect column
+cat /etc/hosts | lines | skip 2 | detect columns
+cat /etc/hosts | lines | skip 2 
+cat /etc/hosts | lines | skip 2 | table
+cat /etc/hosts | lines | skip 2 | detect columns | table
+cat /etc/hosts | lines | skip 2 | split row " " | table
+cat /etc/hosts | lines | skip 1 | split row " " | table
+cat /etc/hosts | lines | skip 1 | detect columns
+cat /etc/hosts | detect columns 
+cat /etc/hosts | detect columns | table 
+cat /etc/hosts | detect columns | table | skip 1
+"12"
+"12" | into int
+"12" | into int | table
+"12" | into int | detect columns | table
+clear
+nu help
+help
+help commands
+help commands | to csv
+help commands | to json
+config nu
+chezmoi ~/.config/nushell
