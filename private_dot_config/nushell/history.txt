@@ -229,3 +229,4 @@ help commands | to csv
 help commands | to json
 config nu
 chezmoi ~/.config/nushell
+chezmoi add ~/.config/nushell
