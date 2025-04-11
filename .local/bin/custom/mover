@@ -1,0 +1,73 @@
+#!/bin/bash
+
+#!/bin/bash
+
+# Script to export and install packages on Arch-based systems
+
+# Function to export installed packages
+export_packages() {
+    echo "Exporting installed packages..."
+
+    # Export explicitly installed packages from official repos
+    pacman -Qen > official_packages.txt
+    echo "Official repository packages exported to official_packages.txt"
+
+    # Export explicitly installed AUR packages
+    pacman -Qem > aur_packages.txt
+    echo "AUR packages exported to aur_packages.txt"
+}
+
+# Function to install packages on a new system
+install_packages() {
+    echo "Installing packages..."
+
+    # Check if files exist
+    if [[ ! -f official_packages.txt ]]; then
+        echo "Error: official_packages.txt not found!"
+        exit 1
+    fi
+    if [[ ! -f aur_packages.txt ]]; then
+        echo "Warning: aur_packages.txt not found, skipping AUR packages."
+    fi
+
+    # Update system and install official repo packages
+    echo "Installing packages from official repositories..."
+    sudo pacman -Syu --needed - < official_packages.txt
+
+    # Check if yay is installed, install it if not
+    if ! command -v yay &> /dev/null; then
+        echo "Installing yay AUR helper..."
+        sudo pacman -S --needed git base-devel
+        git clone https://aur.archlinux.org/yay.git
+        cd yay
+        makepkg -si --noconfirm
+        cd ..
+        rm -rf yay
+    fi
+
+    # Install AUR packages if the file exists
+    if [[ -f aur_packages.txt && -s aur_packages.txt ]]; then
+        echo "Installing AUR packages..."
+        yay -S --needed - < aur_packages.txt
+    else
+        echo "No AUR packages to install."
+    fi
+
+    echo "Package installation complete!"
+}
+
+# Main script logic
+case "$1" in
+    export)
+        export_packages
+        ;;
+    install)
+        install_packages
+        ;;
+    *)
+        echo "Usage: $0 {export|install}"
+        echo "  export: Save installed packages to files"
+        echo "  install: Install packages from saved files"
+        exit 1
+        ;;
+esac

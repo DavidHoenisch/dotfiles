@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pkill ollama
+OLLAMA_ORIGINS=app://obsidian.md* ollama serve &> /dev/null &
+export OLLAMA_HOST=127.0.0.1

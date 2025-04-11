@@ -1,0 +1,4 @@
+portal-bin 1.2.3-1
+python312 3.12.9-1
+rip2-bin 0.9.3-1
+snapd 2.68.3-1

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Iterate over all workspaces and close all windows
+swaymsg -t get_workspaces | jq -r '.[].name' | while read -r workspace; do
+    swaymsg workspace "$workspace"
+    swaymsg "[workspace=\"$workspace\"] kill"
+done
+
+echo "All applications and workspaces closed."

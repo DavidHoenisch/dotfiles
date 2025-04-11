@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Detect connected displays
+PRIMARY_DISPLAY="eDP-1" # Internal display, change this if needed
+EXTERNAL_DISPLAY=$(xrandr --query | grep ' connected' | grep -v $PRIMARY_DISPLAY | cut -d ' ' -f 1)
+
+# Check if an external display is connected
+if [ -z "$EXTERNAL_DISPLAY" ]; then
+    echo "No external display detected. Launching applications on the primary display."
+else
+    echo "External display detected: $EXTERNAL_DISPLAY. Setting it up as primary display to the left of the internal display."
+
+    # Get screen resolution of the primary display
+    PRIMARY_RES=$(xrandr --query | grep $PRIMARY_DISPLAY | grep -oP '\d+x\d+' | head -1)
+
+    # Get screen resolution of the external display
+    EXTERNAL_RES=$(xrandr --query | grep $EXTERNAL_DISPLAY | grep -oP '\d+x\d+' | head -1)
+
+    # Calculate the new position for the primary display (internal display)
+    EXTERNAL_WIDTH=$(echo $EXTERNAL_RES | cut -d 'x' -f 1)
+
+    # Set the external display to the left of the primary display
+    xrandr --output $EXTERNAL_DISPLAY --mode $EXTERNAL_RES --pos 0x0 --primary
+    xrandr --output $PRIMARY_DISPLAY --mode $PRIMARY_RES --pos ${EXTERNAL_WIDTH}x0
+
+    # Set gaps configuration
+    i3-msg gaps inner 10
+    i3-msg gaps outer 15
+fi
+
+# Function to launch an application in a specific workspace
+launch_in_workspace() {
+    local workspace=$1
+    local command=$2
+
+    i3-msg "workspace $workspace"
+    if [ -n "$EXTERNAL_DISPLAY" ]; then
+        i3-msg "move workspace to output $EXTERNAL_DISPLAY"
+    fi
+    i3-msg "exec $command"
+    sleep 1
+}
+
+# Launch applications in specific workspaces
+launch_in_workspace "number 1" "alacritty"
+launch_in_workspace "number 2" "firefox"
+launch_in_workspace "number 3" "flatpak run com.bitwarden.desktop"
+launch_in_workspace "number 4" "/usr/lib/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo"
+launch_in_workspace "number 5" "/usr/lib/opt/google/chrome/google-chrome --profile-directory=Default --app-id=ainjpeloaaccnmmdhgagjnfnfakjnnle"
+launch_in_workspace "number 6" "flatpak run org.telegram.desktop"
+launch_in_workspace "number 7" "flatpak run com.discordapp.Discord"
+

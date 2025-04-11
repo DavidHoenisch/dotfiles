@@ -1,0 +1,16 @@
+#!/bin/bash
+
+
+sudo apt update && sudo apt upgrade -y
+
+
+
+sh <(curl -L https://nixos.org/nix/install) --daemon
+
+# uninstall
+# thunderbird
+# firefox
+#
+#
+#
+#

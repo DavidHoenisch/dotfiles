@@ -1,0 +1,11 @@
+#!/bin/bash 
+
+file=$(/bin/eza -liR ~/.local/bin | awk '{print $8}' | xargs -I{} realpath $HOME/.local/bin/{} | fzf --preview='bat --theme=1337 {}')
+
+
+if [[ $file == "" ]] 
+then
+	exit 1
+else
+	$file 
+fi

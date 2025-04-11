@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ollama serve 2> /dev/null &

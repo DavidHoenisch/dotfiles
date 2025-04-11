@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Define the base directory for the Obsidian vault
+BASE_DIR="$HOME/Documents/Personal/"
+
+# Run fzf with dynamic rg and open the selected file in nvim
+FZF_DEFAULT_COMMAND="rg --line-number --no-heading --color=always --smart-case '' $BASE_DIR || true"
+PATH=$(fzf --prompt "Search: " --query '' --bind "change:reload(rg --line-number --no-heading --color=always --smart-case {q} $BASE_DIR || true)" \
+  --delimiter ':' --nth 2.. --ansi --no-sort --preview 'bat --style=numbers --color=always --highlight-line {2} {1}' \
+  --preview-window 'right:60%:+{2}' --bind 'enter:execute(echo {} | cut -d: -f1 | realpath')
+
+nvim $PATH

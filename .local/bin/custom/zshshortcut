@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+command=$(grep '^alias ' $HOME/.zshrc | fzf | sed -E 's/^alias ([^=]*)="(.*)"/\2/')
+echo "Selected command: $command"
+eval $command
+
