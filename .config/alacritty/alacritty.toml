@@ -1,0 +1,15 @@
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding.x = 10
+padding.y = 10
+opacity = 0.9
+
+decorations = "Buttonless"
+
+blur = true
+
+[font]
+normal.family = "Agave Nerd Font"
+size = 15

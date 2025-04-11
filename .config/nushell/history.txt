@@ -1,0 +1,754 @@
+ls
+ls | where filetype == file
+ls | where type == file
+clear
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
+nvim 
+nvim ~/.config/nushell/config.nu
+exit
+clear
+nvim ~/.cache/starship/init.nu
+cd plugins
+cd ~/.config/nvim/lua/custom/plugins/
+ls
+nvim nushell.lua
+nvim
+nvim ~/.config/nushell/config.nu
+nvim nushell.lua
+nvim
+nvim ~/.config/nushell/config.nu
+nvim nushell.lua
+nvim ~/.config/nushell/config.nu
+ls
+ls 
+rip nushell.lua
+nvim ~/.config/nushell/config.nu
+nvim ~/.config/nushell/env.nu
+nvim ~/.config/nushell/config.nu
+nvim ~/.zshrc
+nvim ~/.config/nushell/env.nu
+nvim ~/.config/nushell/config.nu
+exit
+cd Github
+nvim ~/.zoxide.nu
+zoxide Github
+z Github
+nvim ~/.config/nushell/config.nu
+source ~/.config/nushell/config.nu
+cd drive
+exit
+cd drive
+nvim ~/.config/nushell/config.nu
+source ~/.config/nushell/config.nu
+cd drive
+nix-env -iA nixpkgs.caraspace
+nix-env -iA nixpkgs.carapace
+nvim ~/.config/nushell/config.nu
+nvim ~/.config/nushell/env.nu
+exit
+nu
+exti
+exit
+clear
+ls
+exit
+ls
+cd drive
+ls
+az account show
+ls
+az account show
+az account show|environment
+clear
+ls
+whoami
+az account show|from json
+ls
+cat "workshop 2.txt" 
+cat "workshop 2.txt" | to string
+cat "workshop 2.txt" | to
+cat "workshop 2.txt" | to text
+chx
+./chx ip crowdsec 39.98.85.230 --format true
+chx ip crowdsec 39.98.85.230 --format true
+chx ip crowdsec 39.98.85.230 --format true|glow
+"39.98.85.230" | chx ip crowdsec --format true
+"39.98.85.230" | chx ip crowdsec
+ls
+let df = (dfr open exportUsers_2024-8-14.csv)
+open exportUsers_2024-8-14.csv|shape
+env
+$env
+help commands
+help commands | grep dataframe
+help search
+help commands
+help commands | find dataframe
+help commands | find Dataframe
+exit
+clear
+shell
+env
+config env
+exit
+clear
+config env
+config conf
+config help
+help config
+config nu
+[ nu_plugin_inc<\n>  nu_plugin_polars<\n>  nu_plugin_gstat<\n>  nu_plugin_formats<\n>  nu_plugin_query<\n>] | each { cargo install $in } | ignore
+clear
+polars
+port
+help port
+ps
+ps | where mem > 0
+ps | where $nu.pip | get ppip
+ps | where $nu.pip | get ppid
+ps | where $nu.pid | get ppid
+ps | where pid == $nu.pid | get ppid
+ps | where pid == $nu.pid | get ppid | copy
+exit
+ls
+open devices.csv
+conf
+exit
+clear
+ls
+clear
+config env
+config nu
+date
+time
+date time
+date now
+date to-table
+date now to-table
+date humanize 
+date now
+date now | date to-table
+date now | date humanize
+date now | date timezone
+date now | date to-timezone
+atuin import shell
+atuin import auto
+atuin import nu
+exit
+clear
+atuin init nu | save -f ~/.local/share/atuin/init.nu
+source ~/.local/share/atuin/init.nu
+nu env
+config env
+config nu
+config env
+exit
+clear
+mkdir ~/.local/share/atuin/<\n>atuin init nu | save ~/.local/share/atuin/init.nu
+config nu
+exit
+nu
+ls
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | where vendorProject == Microsft
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | to table
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | from json
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | where vendorProject == "Microsft"
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | get vulnerabilities
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | get vulnerabilities | where vendorProject == "Microsft"
+http get https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json | get vulnerabilities | where vendorProject == "Microsoft"
+lsd
+ls
+ls | where type == file
+ls | where type == file | where size < 21.y
+ls | where type == file | where size < 21.7
+ls | where type == file | where size < 21
+ls | where type == file | where size < 21mb
+ls | where type == file | where size > 21mb
+du
+ls **/*
+ls **/* | to csv
+clear
+ps
+sys
+sys | get host | get sessions
+sys | get host
+sys 
+sys net
+sys mem
+sys mem | to csv
+enter /etc/hosts
+enter /etc
+ls
+cd 
+open /etc/hosts| to table
+open /etc/hosts| line
+open /etc/hosts| lines
+open /etc/hosts| table
+open /etc/hosts| columns
+open /etc/hosts| to-table
+nu help
+help
+help --find table
+open /etc/hosts| table
+open /etc/hosts| detect columns
+open /etc/hosts| detect columns | table
+open /etc/hosts| select -2 | detect columns | table
+open /etc/hosts| skip 1 | detect columns | table
+open /etc/hosts | skip 1 | detect columns | table
+open /etc/hosts | detect columns | table
+open /etc/hosts 
+open /etc/hosts | skip 1 | detect columns | table
+cat /etc/hosts
+cat /etc/hosts | skip 1
+open /etc/hosts | into string 
+open /etc/hosts | into string | skip 1
+cat /etc/hosts | lines
+cat /etc/hosts | lines | skip 1
+cat /etc/hosts | lines | skip 2 | detect column
+cat /etc/hosts | lines | skip 2 | detect columns
+cat /etc/hosts | lines | skip 2 
+cat /etc/hosts | lines | skip 2 | table
+cat /etc/hosts | lines | skip 2 | detect columns | table
+cat /etc/hosts | lines | skip 2 | split row " " | table
+cat /etc/hosts | lines | skip 1 | split row " " | table
+cat /etc/hosts | lines | skip 1 | detect columns
+cat /etc/hosts | detect columns 
+cat /etc/hosts | detect columns | table 
+cat /etc/hosts | detect columns | table | skip 1
+"12"
+"12" | into int
+"12" | into int | table
+"12" | into int | detect columns | table
+clear
+nu help
+help
+help commands
+help commands | to csv
+help commands | to json
+config nu
+chezmoi ~/.config/nushell
+chezmoi add ~/.config/nushell
+config nu
+config env
+exit
+nix-env -iA nixpkgs:nixos.go
+nix-env -iA nixpkgs.nixos.go
+nix-env -iA nixpkgs:go
+nix-env -iA nixpkgs.go
+nix-env -iA nixpkgs.go_1_23
+nix-env -iA nixpkgs.go_1_23_1
+nix-env -iA nixpkgs.go_1_23
+clear
+cd bolt
+ls
+nvim
+go build
+nvim
+go build
+ls
+./bolt
+./bolt init
+ls
+go install
+mkdir test
+cd test/
+bolt
+bolt init  --help
+cd ../
+nvim
+go install
+cd test
+bolt init
+bolt init --name test
+ls
+cd ../
+nvim
+go install
+cd test/
+bolt init --name test
+ls
+cd ../
+nvim
+git status
+git add .
+git commit -m "add in initial code and structure"
+git push
+chezmoi add ~/.config/nvim
+ls
+nvim
+git status
+git add .
+nvim
+git add .
+git commit -m "began refactoring the errors package"
+git push
+whois mccut.us
+ssh-keygen
+ssh-keygen --help
+ssh-keygen /home/.ssh/mcc-git
+ssh-keygen
+cat ~/.ssh/mcc-git.pub 
+cat ~/.ssh/mcc-git.pub |copy 
+cat ~/.ssh/mcc-git.pub |wl-copy
+cd Downloads
+cat GitHub.cer 
+cat GitHub.cer|wl-copy
+cat "GitHub(1).cer" |wl-copy 
+rip *.crt
+ls
+ls | where type == file
+ls | where type == file | select *.cer
+ls | where type == file | find cer
+ls | where type == file | find cer | for $x {|x| rip $x.name }
+rip *cer
+cat GitHub.cer
+cat "GitHub Enterprise Cloud - Organization.cer" 
+cat "GitHub Enterprise Cloud - Organization.cer" |wl-copy
+wget https://imgflip.com/i/99cdra
+;s
+ls
+yy
+yazi
+config nu
+zz
+source ~/.local/share/atuin/init.nu
+config --help
+source $nu.env-path
+source $nu.config-path
+yy
+cd MCC-SS
+ls
+nvim MCC-SSP.md 
+3650 / 250
+36500 / 250
+clear
+35643 / 250
+az resource list | jq -r ".[].name"
+az resource list | jq -r ".[].name" |wc -l
+clear
+az resource list | jq -r ".[].name" | from json
+az resource list | from json
+nvim MCC-SSP.md
+az resource list | from json  | count
+az resource list | from json  | length
+az resource list | from json | length
+clear
+sudo dnf update 
+nupm
+use nupm
+cd ~/.config 
+ls
+cd nushell/
+ls
+git clone https://github.com/nushell/nupm.git
+ls
+use nupm/<\n>nupm install --force --path .
+cd nupm/
+ls
+mv nupm ../
+cp nupm ../bak
+cp -r nupm ../bak
+cd ../
+ls
+rip nupm/
+mv bak/ nupm
+use nupm/<\n>nupm install --force --path .
+ls
+cd nupm/
+ls
+cd ,,.
+cd ../\
+cd ../
+ls
+use nupm/
+ls
+mkdir plugins
+cd plugins
+git clone https://github.com/FMotalleb/nu_plugin_clipboard.git<\n>cd nu_plugin_clipboard<\n>cargo build -r<\n>plugin add target/release/nu_plugin_clipboard
+plugin use 'clipboard'
+ls
+cd ../
+ls
+cd ./
+cd ../
+las
+ls
+cd plugins
+ls
+git clone https://github.com/dead10ck/nu_plugin_dns.git
+ls
+cd nu_plugin_clipboard/ls
+ls
+cd nu_plugin_dns
+ls
+cargo install
+cargo install .
+cargo install --path  .
+plugin add $"($env.CARGO_HOME)/bin/nu_plugin_dns"
+cargo
+$env
+$env.CARGO_HOME
+cargo 
+$env.PATH = (<\n>  $env.PATH<\n>  | split row (char esep)<\n>  | append /usr/local/bin<\n>  | append ($env.CARGO_HOME | path join bin)<\n>  | append ($env.HOME | path join .local bin)<\n>  | uniq # filter so the paths are unique<\n>)
+which cargo
+path
+$env.PATH = ($env.PATH | split row (char esep) | append $(which cargo))
+$env.PATH = ($env.PATH | split row (char esep) | append "$(which cargo)")
+env
+exit
+nu
+shell
+plugin add $"($env.CARGO_HOME)/bin/nu_plugin_dns"
+plugin list
+[ nu_plugin_inc<\n>  nu_plugin_polars<\n>  nu_plugin_gstat<\n>  nu_plugin_formats<\n>  nu_plugin_query<\n>] | each { cargo install $in } | ignore
+cargo install nu_plugin_dns
+plugin add $"($env.CARGO_HOME)/bin/nu_plugin_dns"
+plugin add 
+env
+$env
+$env | select CARGO
+cd $(which cargo)
+which cargo
+cd .cargo/bin
+cd ~/.cargo/bin
+ls
+$env.CARGO_HOME="~/.cargo/bin"
+$env.CARGO_HOME =~/.cargo/bin
+$env.CARGO_HOME = ~/.cargo/bin
+plugin add $"($env.CARGO_HOME)/bin/nu_plugin_dns"
+$env.CARGO_HOME = ~/.cargo/bin/
+plugin add $"($env.CARGO_HOME)/nu_plugin_dns"
+$env.CARGO_HOME = ~/.cargo
+plugin add $"($env.CARGO_HOME)/bin/nu_plugin_dns"
+version
+which nushell
+which nu
+exit
+version
+source $env.config
+source $nu.config-path
+clear
+source $nu.config-path
+which nu
+rip $(which nu)
+rip "$(which nu)"
+exit
+clear
+cd MCC-SSP.md
+cd MCC-SSP
+ls
+clear
+cd MCC-SSP
+ls
+cd MCC-SSP
+ls
+cat controlstatus.csv 
+open controlstatus.csv
+ls
+nvim
+cd tools/secframe/
+ls
+nvim
+cd
+cd Github
+nvim example.nu
+nu --lsp
+ls
+cd MCC-SSP
+ls
+nvim control-owners.nu
+ls
+cd tools/secframe/
+ls
+nvim 
+go install
+ssp 
+ssp controls
+ls
+open controls.csv
+cat controls.csv 
+nvim
+go install
+ssp controls
+nvim 
+go install
+ssp controls
+cat controls.csv 
+cat controls.csv |wl -l
+cat controls.csv |wc -l
+ls
+clear
+ls
+go install
+ssp controls
+go install
+ssp controls
+cat controls.csv
+go install
+go install 
+ssp controls
+nvim
+go build
+./ssp controls
+cat controls.csv 
+nvim
+go build
+./ssp controls
+nvim
+clear
+sudo dnf update
+clear
+208 + 13
+206 + 13
+cd epyk
+ls
+git status
+git add .
+git commit -m "adjustments to make file "
+git push
+cd MCC-SSP
+ls
+cd tools/secframe/
+clear
+go build
+ls
+./ssp controls
+cat controls.csv 
+go build
+./ssp controls
+go build
+./ssp controls
+cat controls.csv 
+open controls.csv
+cat controls.csv | wc -l 
+nvim controls.csv 
+clear
+go build
+./ssp controls
+open controls.csv
+clear
+ls
+cd tools/secframe/
+go install
+cd ../../
+ls
+ssp controls
+ls
+open controlstatus.csv
+rip controlstatus.csv
+ls
+open controls.csv
+controls.csv
+csv
+open controls.csv
+open controls.csv | select owner
+open controls.csv | where owner == "Brian Schmitz"
+cd tools/secframe/
+go install
+cd ../../
+ssp controls
+open controls.csv
+open controls.csv | where owner == "Brian Schmitz"
+cd tools/secframe/
+go install
+cd ../../
+ssp controls
+open controls.csv | where owner == "Brian Schmitz"
+open controls.csv | <\n>echo {<\n>|row| {<\n>test: ($row.id + " " + $row.status)}}
+open controls.csv | each {|row| {test: ($row.id + " " + $row.status)}}
+open controls.csv | where owner == "Mark Chapman"
+open controls.csv | where owner == "David Hoenisch"
+open controls.csv | group_by 
+open controls.csv | group-by 
+open controls.csv | group-by owner
+open controls.csv | group-by owner | each {|group| {owner: $group.owner, count: ($group | count)}} | group-by count
+open controls.csv |<\n>group-by owner<\n>  | each { |group| {owner: $group.owner, count: ($group | count)} }<\n>  | sort-by count
+open controls.csv<\n>| each { |row| {owner: $row.owner, count: 1} }<\n>| group-by owner<\n>| each { |group| {owner: $group.owner, count: ($group | sum column=count)} }<\n>| sort-by count
+open controls.csv | group-by owner
+help
+help command
+help commands
+dfr
+[ nu_plugin_inc<\n>  nu_plugin_polars<\n>  nu_plugin_gstat<\n>  nu_plugin_formats<\n>  nu_plugin_query<\n>] | each { cargo install $in } | ignore
+polars
+which cargo
+cd ~/.config/bin
+cd ~/.cargo/bin
+ls
+cd nu_plugin_polars
+./nu_plugin_polars
+env
+$env
+$env.CARGO_HOME = ~/.cargo
+cd
+polars
+plugin use polars
+plugin add $"($env.CARGO_HOME)/bin/nu_plugin_polars"
+plugin add ~/.cargo/bin/nu_plugin_polars
+[ nu_plugin_inc<\n>  nu_plugin_polars<\n>  nu_plugin_gstat<\n>  nu_plugin_formats<\n>  nu_plugin_query<\n>] | each { cargo install $in } | ignore
+plugin add ~/.cargo/bin/nu_plugin_polars
+plugin list
+plugin add ~/.cargo/bin/nu_plugin_dns
+nushell version
+version 
+nix-env --uninstall nushell
+sudo dnf install nushell
+which brew
+cd Downloads/
+ls
+gunzip nu-0.99.1-aarch64-unknown-linux-musl.tar.gz 
+ls
+exit
+ls
+version
+mv nu /usr/bin/
+sudo mv nu /usr/bin/
+nvim ~/.config/nushell/config.nu
+exit
+nvim ~/.config/nushell/config.nu
+exit
+clear
+cd
+plugin add ~/.cargo/bin/nu_plugin_dns
+plugin add ~/.cargo/bin/nu_plugin_polars
+polars
+plugin use polars
+plugin use dns
+dns
+polars
+cd MCC-SSP
+ls
+open controls.csv
+open controls.csv | polars sum 
+dfr
+let df = polars open controls.csv
+$df
+$df | polars summary 
+plugin stop polars
+polars
+open controls.csv | polars sum 
+open controls.csv
+open controls.csv| where owner ~= "Matthew"
+open controls.csv| where owner =~ "Matthew"
+open controls.csv| where owner =~ "Brian"
+open controls.csv| where owner == nil
+open controls.csv| where owner == null
+open controls.csv| where owner = null
+open controls.csv| where owner == null
+open controls.csv| where owner == ""
+open controls.csv| where owner == "" | toilet 
+open controls.csv| where owner == "" | telegram-desktop 
+open controls.csv| where owner == "" | to csv
+open controls.csv| where owner == "" | to csv | save 
+open controls.csv| where owner == "" | to csv | save unmapped-controls.csv
+ls
+open unmapped-controls.csv
+nvim
+nvim example.nu
+ls
+ssp controls
+ls
+ll
+ls --help
+ls -la
+rip .idea/ .DS_Store 
+ls -la
+cat devices.csv
+open devices.csv
+open devices.csv | where name =~ "avd"
+ls
+open software.csv
+cd tools/secframe/
+nvim
+nvim
+go install
+ssp --help
+ssp software
+go install
+ssp software
+ls
+cat software.csv
+clear
+open software.csv
+go install
+ssp software
+open software.csv
+open software.csv | where platform == "windows"
+open software.csv | where platform == "windows" | reject publisher =~ "CN=Microsoft"
+open software.csv | where platform == "windows" | where publisher != "CN=Microsoft"
+open software.csv | where platform == "windows" | where publisher != "CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
+ssp controls
+open controls.csv
+open controls.csv | where owner =~ "Matthew"
+open controls.csv | where owner =~ "Brian"
+open controls.csv | where owner =~ "David"
+open controls.csv | where owner =~ "Matthew"
+open controls.csv | where owner =~ "Brian"
+open controls.csv | where owner =~ "Makr"
+open controls.csv | where owner =~ "Mark"
+open controls.csv | where owner =~ "David"
+clear
+cd chx
+ls
+git branch
+git checkout
+git pull
+clear
+git checkout main
+git pull
+clear
+git checkout -b v3
+git add .
+git commit -m "v3 batman!"
+git push --force 
+git push --set-upstream origin v3
+nvim
+cd Github
+cargo --help
+cargo new get
+ls
+cd get/
+ls
+nvim Cargo.toml
+nvim
+conf
+nvim ~/.config/nvim
+nvim
+nvim ~/.config/nvim
+nvim 
+nvim ~/.config/nvim
+nvim
+clear
+reboot now
+sudo reboot now -h
+clear
+ls
+nvim Cargo.toml
+clear
+cd nucamp
+ls
+cd ../nucamp
+ls
+cd pcap/
+ls
+clear
+ls
+unzip 2022-10-12-traffic-for-IcedID-infection-with-Cobalt-Strike-carved-and-sanitized.zip
+ls
+rip *.zip
+ls
+clear
+ls
+termshark 2022-10-11-thru-10-12-IcedID-infection-with-Cobalt-Strike-carved-and-sanitized.pcap
+ls
+rip 2022-10-11-thru-10-12-IcedID-infection-with-Cobalt-Strike-carved-and-sanitized.pcap
+ls
+unzip 2022-12-20-IcedID-infection-with-Cobalt-Strike.pcap.zip
+ls
+rip *.zip
+chx hash --help
+exit
+ls
+mv results.csv smbfiles.csv

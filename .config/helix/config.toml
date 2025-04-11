@@ -1,0 +1,31 @@
+theme = "kanagawa-dragon"
+
+[editor]
+line-number = "relative"
+scrolloff = 5
+middle-click-paste = false
+shell = ["bash", "-c"]
+true-color = true
+rulers = [120]
+auto-format = false # not yet
+cursorline = true
+gutters = ["diagnostics", "line-numbers", "spacer", "diff"]
+
+[editor.soft-wrap]
+enable = true
+wrap-indicator = ''
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["version-control", "spacer", "separator", "file-name", "file-modification-indicator"]
+center = []
+right = ["diagnostics", "position", "file-line-ending"]
+
+[editor.indent-guides]
+render = true
+character = "╎"
