@@ -180,7 +180,7 @@ function kubectlgetall {
 }
 
 # setting for fuz
-alias fuz='/home/dhoenisch/.local/bin/fuz --path "/home/dhoenisch/Documents/Personal"'
+alias fuz='/home/dhoenisch/.local/bin/custom/fuz --path "/home/dhoenisch/Documents/Personal"'
 alias fz='fuz --sorttime'
 alias fze='fuz --edit'
 alias fzd='fuz --dir-search'

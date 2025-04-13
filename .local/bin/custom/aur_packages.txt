@@ -1,4 +1,35 @@
-portal-bin 1.2.3-1
-python312 3.12.9-1
-rip2-bin 0.9.3-1
-snapd 2.68.3-1
+atuin
+bash-language-server
+bat
+chafa
+direnv
+discord
+drawing
+eza
+flatpak
+fzf
+ghostty
+github-cli
+go
+helix
+id3v2
+neovim
+npm
+pet-bin
+portal-bin
+pyenv
+pyright
+python312
+rip2-bin
+signal-desktop
+snapd
+starship
+telegram-desktop
+tmux
+vscodium
+wezterm
+yaml-language-server
+yarn
+yt-dlp
+zen-browser-bin
+zoxide
