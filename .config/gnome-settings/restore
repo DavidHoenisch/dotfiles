@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+dconf load / < ./full-backup
