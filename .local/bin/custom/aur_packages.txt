@@ -5,6 +5,7 @@ chafa
 direnv
 discord
 drawing
+element-desktop
 eza
 flatpak
 fzf
