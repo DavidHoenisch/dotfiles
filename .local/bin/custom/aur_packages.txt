@@ -14,6 +14,7 @@ github-cli
 go
 helix
 id3v2
+mailspring
 neovim
 npm
 pet-bin
@@ -32,5 +33,6 @@ wezterm
 yaml-language-server
 yarn
 yt-dlp
+zed
 zen-browser-bin
 zoxide

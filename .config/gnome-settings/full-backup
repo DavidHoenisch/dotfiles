@@ -40,6 +40,10 @@ window-maximized=false
 window-position=[35, 32]
 window-size=[1363, 642]
 
+[org/gnome/Music]
+window-maximized=false
+window-size=[1722, 804]
+
 [org/gnome/Totem]
 active-plugins=['autoload-subtitles', 'save-file', 'open-directory', 'screenshot', 'recent', 'mpris', 'screensaver', 'movie-properties', 'skipto', 'vimeo', 'apple-trailers', 'rotation', 'variable-rate']
 subtitle-encoding='UTF-8'
@@ -71,8 +75,8 @@ panel-id='world'
 size=(870, 690)
 
 [org/gnome/control-center]
-last-panel='background'
-window-state=(980, 628, true)
+last-panel='system'
+window-state=(1920, 845, true)
 
 [org/gnome/deja-dup]
 backend='google'
@@ -129,7 +133,7 @@ show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['org-manjaro-pamac-manager', 'zen', 'gnome-power-panel', 'discord', 'signal-desktop', 'org-gnome-rhythmbox3']
+application-children=['org-manjaro-pamac-manager', 'zen', 'gnome-power-panel', 'discord', 'signal-desktop', 'org-gnome-rhythmbox3', 'org-gnome-lollypop', 'org-telegram-desktop', 'mailspring']
 
 [org/gnome/desktop/notifications/application/discord]
 application-id='discord.desktop'
@@ -137,11 +141,20 @@ application-id='discord.desktop'
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
 
+[org/gnome/desktop/notifications/application/mailspring]
+application-id='Mailspring.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-lollypop]
+application-id='org.gnome.Lollypop.desktop'
+
 [org/gnome/desktop/notifications/application/org-gnome-rhythmbox3]
 application-id='org.gnome.Rhythmbox3.desktop'
 
 [org/gnome/desktop/notifications/application/org-manjaro-pamac-manager]
 application-id='org.manjaro.pamac.manager.desktop'
+
+[org/gnome/desktop/notifications/application/org-telegram-desktop]
+application-id='org.telegram.desktop.desktop'
 
 [org/gnome/desktop/notifications/application/signal-desktop]
 application-id='signal-desktop.desktop'
@@ -176,6 +189,7 @@ secondary-color='#000000'
 sort-order=['org.gnome.Settings.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Nautilus.desktop']
 
 [org/gnome/desktop/wm/keybindings]
+close=['<Shift><Alt>q']
 cycle-windows=@as []
 cycle-windows-backward=@as []
 maximize=@as []
@@ -187,6 +201,7 @@ switch-to-workspace-last=['<Alt>5']
 toggle-fullscreen=['<Alt>f']
 
 [org/gnome/desktop/wm/preferences]
+button-layout='close,minimize,maximize:appmenu'
 num-workspaces=5
 
 [org/gnome/evolution-data-server]
@@ -218,7 +233,7 @@ migrated-gtk-settings=true
 search-filter-time-type='last_modified'
 
 [org/gnome/nautilus/window-state]
-initial-size=(1571, 550)
+initial-size=(1571, 741)
 initial-size-file-chooser=(890, 550)
 
 [org/gnome/portal/filechooser/md.obsidian.Obsidian]
