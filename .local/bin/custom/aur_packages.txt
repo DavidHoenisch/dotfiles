@@ -24,6 +24,7 @@ pyright
 python312
 rip2-bin
 signal-desktop
+silicon
 snapd
 starship
 telegram-desktop
