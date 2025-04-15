@@ -11,11 +11,13 @@ if [ $UID -ne 0 ]; then
 	exit 1
 fi
 
-declare -a prereq=("git" "stow" "yay")
+
+declare -a prereq=("git" "stow" "base-devel")
 
 for app in ${prereq[@]}; do
 	sudo pacman -Sy --noconfirm "$app"
 done
+
 
 # Clone the dotfiles repo
 git clone "$DOTFILES_GITHUB_REPO" "$OUTPUT_GIT_DIR"
