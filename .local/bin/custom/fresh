@@ -1,10 +1,16 @@
 #!/bin/bash
 
-DOTFILES_GITHUB_REPO="https://github.com/DavidHoenisch/dotfiles"
+DOTFILES_GITHUB_REPO="https://github.com/DavidHoenisch/dotfiles.git"
 OUTPUT_GIT_DIR="$HOME/dotfiles"
 BIN_DIR="$HOME/.local/bin/custom"
 
 # Install all the prereqs
+
+if [ $UID -ne 0 ]; then
+	echo "run with sudo!"
+	exit 1
+fi
+
 declare -a prereq=("git" "stow" "yay")
 
 for app in ${prereq[@]}; do
