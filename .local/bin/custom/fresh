@@ -1,0 +1,20 @@
+#!/bin/bash
+
+DOTFILES_GITHUB_REPO="https://github.com/DavidHoenisch/dotfiles"
+OUTPUT_GIT_DIR="$HOME/dotfiles"
+BIN_DIR="$HOME/.local/bin/custom"
+
+# Install all the prereqs
+declare -a prereq=("git" "stow" "yay")
+
+for app in ${prereq[@]}; do
+	pacman -Sy --noconfirm "$app"
+done
+
+# Clone the dotfiles repo
+git clone "$DOTFILES_GITHUB_REPO" -o "$OUTPUT_GIT_DIR"
+
+(cd "$OUTPUT_GIT_DIR" && stow .)
+
+
+$BIN_DIR/gmanage restore
