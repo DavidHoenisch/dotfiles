@@ -8,11 +8,11 @@ BIN_DIR="$HOME/.local/bin/custom"
 declare -a prereq=("git" "stow" "yay")
 
 for app in ${prereq[@]}; do
-	pacman -Sy --noconfirm "$app"
+	sudo pacman -Sy --noconfirm "$app"
 done
 
 # Clone the dotfiles repo
-git clone "$DOTFILES_GITHUB_REPO" -o "$OUTPUT_GIT_DIR"
+git clone "$DOTFILES_GITHUB_REPO" "$OUTPUT_GIT_DIR"
 
 (cd "$OUTPUT_GIT_DIR" && stow .)
 
