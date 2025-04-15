@@ -8,6 +8,7 @@ GSETTINGS_CONFIG_BACKUP_SCRIPT="$HOME/.config/gnome-settings/backup"
 GSETTINGS_CONFIG_RESTORE_SCRIPT="$HOME/.config/gnome-settings/restore"
 GSETTINGS_CONFIG_BACKUP_FILE="$HOME/.config/gnome-settings/full-backup"
 
+
 ## dotfiles backup
 DOTFILES_HOME_DIR="$HOME/dotfiles"
 
@@ -41,6 +42,11 @@ function generate_commit_message() {
 
 }
 
+function dump_extentions() {
+	gnome-extensions-cli list --only-uuid > "$DOTFILES_HOME_DIR/.local/bin/custom/gnome-extensions.txt"
+}
+
+
 function dump_settings() {
 	dconf dump / > $GSETTINGS_CONFIG_BACKUP_FILE
 }
@@ -51,6 +57,8 @@ function restore_settings() {
 
 function sync_settings() {
 	dump_settings
+
+	dump_extentions
 
 	message=$(generate_commit_message)
 

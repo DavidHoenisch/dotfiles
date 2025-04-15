@@ -24,6 +24,7 @@ alias cst="container-structure-test"
 alias n="nvim"
 alias hx="helix"
 alias mp="multipass"
+alias getx="gnome-extensions-cli"
 
 
 # tmux binds

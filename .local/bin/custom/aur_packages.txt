@@ -22,6 +22,7 @@ portal-bin
 pyenv
 pyright
 python312
+python-pipx
 rip2-bin
 signal-desktop
 silicon
