@@ -20,7 +20,7 @@ done
 
 
 # Clone the dotfiles repo
-git clone "$DOTFILES_GITHUB_REPO" "$OUTPUT_GIT_DIR"
+git clone --depth=1 "$DOTFILES_GITHUB_REPO" "$OUTPUT_GIT_DIR"
 
 (cd "$OUTPUT_GIT_DIR" && stow .)
 
