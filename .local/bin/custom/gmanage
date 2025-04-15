@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# GLOBAL VARIABLES
+
+## gnome settings
+GSETTINGS_CONFIG_HOME="$HOME/.config/gnome-settings"
+GSETTINGS_CONFIG_BACKUP_SCRIPT="$HOME/.config/gnome-settings/backup"
+GSETTINGS_CONFIG_RESTORE_SCRIPT="$HOME/.config/gnome-settings/restore"
+GSETTINGS_CONFIG_BACKUP_FILE="$HOME/.config/gnome-settings/full-backup"
+
+## dotfiles backup
+DOTFILES_HOME_DIR="$HOME/dotfiles"
+
+
+# print_help_menu prints help menu to standard out
+# this is printed by default when no arguments are
+# provided with tool execution
+function print_help_menu() {
+cat << EOF
+
+CLI tool for managing backup and restore of dotfiles, configs
+and other such settings on gnome based systems. Designed for arch
+based systems.
+
+
+
+ARGS		DESCRIPTION
+sync		Sync all settings and dotfiles with remote git repsitory
+save-settings	Dump all gnome settings to backup file
+restore		Restore system, include dotfile and gnome settings
+
+EOF
+}
+
+function generate_commit_message() {
+
+	# Maybe add in more dynamic data to this in order
+	# for commit messages to be more accurate?
+
+	echo "latest settings and dotfile adustments"
+
+}
+
+function dump_settings() {
+	dconf dump / > $GSETTINGS_CONFIG_BACKUP_FILE
+}
+
+function restore_settings() {
+	dconf load / < $GSETTINGS_CONFIG_BACKUP_FILE
+}
+
+function sync_settings() {
+	dump_settings
+
+	message=$(generate_commit_message)
+
+	(cd $DOTFILES_HOME_DIR && git add . && git commit -m "$message" && git push)
+
+
+}
+
+if [ "$#" -ne 1 ]; then
+	print_help_menu
+elif [[ $1 == "sync" ]]; then
+	sync_settings
+elif [[ $1 == "save-settings" ]]; then
+	dump_settings
+elif [[ $1 == "restore" ]]; then
+	restore_settings
+else
+	echo "unknown command"
+fi
