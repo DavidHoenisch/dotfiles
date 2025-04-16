@@ -5,25 +5,80 @@ OUTPUT_GIT_DIR="$HOME/dotfiles"
 BIN_DIR="$HOME/.local/bin/custom"
 
 # Install all the prereqs
-
 declare -a prereq=("git" "stow" "base-devel")
 
+function install_prereq_apps() {
+
+	for app in ${prereq[@]}; do
+		sudo pacman -Sy --noconfirm "$1"
+	done
+}
+
+function setup_dotfiles_repo() {
+
+	# Clone the dotfiles repo
+	git clone --depth=1 "$DOTFILES_GITHUB_REPO" "$OUTPUT_GIT_DIR"
+	(cd "$OUTPUT_GIT_DIR" && stow .)
+}
+
+function install_yay() {
+
+	(cd /tmp && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si)
+}
+
+function install_pipx_tools() {
+
+	pipx install gnome-extensions-cli --system-site-packages
+}
+
+function setup_gnome_settings() {
+
+	cat $HOME/.local/bin/custom/gnome-extensions.txt | xargs gnome-extensions-cli install
+	$HOME/.config/gnome-settings/restore
+}
+
+# check prereqs...if not installed call the func
 for app in ${prereq[@]}; do
-	sudo pacman -Sy --noconfirm "$app"
-done
+	if ! command -v "$app" &> /dev/null; then
+		echo "installing $app"
+		install_prereq_apps "$app"
+	fi
+do
 
-# Clone the dotfiles repo
-git clone --depth=1 "$DOTFILES_GITHUB_REPO" "$OUTPUT_GIT_DIR"
+# now that we have the prereq apps, pull in the dotfiles
+# dir, but first check if is already present
+if ! test -d $OUTPUT_GIT_DIR; then
+	setup_dotfiles_repo
+else; then
+	# TODO: this will bite me is the tush...should handle more
+	# elegantly
+	echo "it appears that this is directory already exixts"
+	mkdir -p $HOME/bkup
+	mv $DOTFILES_GITHUB_REPO $HOME/mkup/
+	setup_dotfiles_repo
+fi
 
-(cd "$OUTPUT_GIT_DIR" && stow .)
+# Addmitantly it would be nice to handle this in the
+# above install of prereqs, however since this requires
+# a git clone it might be better to do it this way
+if ! command -v yay &> /dev/null; then
+	install_yay
+fi
 
-(cd /tmp && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si)
+# Now we will check for pipx stuff, first, checking if it
+# exists first, then installing all the stuff required
+if ! command -v pipx &> /dev/null; then
+	yay -Sy --noconfirm --needed python-pipx
+fi
+
+if ! command gnome-settings-cli &> /dev/null; then
+	install_pipx_tools
+fi
+
+# Now that we have all those tools installed, lets setup
+# all the gnome extentions and settings
 
 $BIN_DIR/gmanage restore
 $BIN_DIR/mover install
 
-pipx install gnome-extensions-cli --system-site-packages
-
-cat $HOME/.local/bin/custom/gnome-extensions.txt | xargs gnome-extensions-cli install
-
-$HOME/.config/gnome-settings/restore
+setup_gnome_settings
