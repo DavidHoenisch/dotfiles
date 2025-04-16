@@ -43,7 +43,7 @@ function generate_commit_message() {
 }
 
 function dump_extentions() {
-	gnome-extensions list > "$DOTFILES_HOME_DIR/.local/bin/custom/gnome-extensions.txt"
+	gnome-extensions-cli list --only-uuid > "$DOTFILES_HOME_DIR/.local/bin/custom/gnome-extensions.txt"
 }
 
 
