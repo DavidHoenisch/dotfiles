@@ -78,7 +78,7 @@ fi
 # Now that we have all those tools installed, lets setup
 # all the gnome extentions and settings
 
-$BIN_DIR/gmanage restore
-$BIN_DIR/mover install
+./$BIN_DIR/gmanage restore
+./$BIN_DIR/mover install
 
 setup_gnome_settings
