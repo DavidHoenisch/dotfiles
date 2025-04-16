@@ -49,7 +49,7 @@ done
 # dir, but first check if is already present
 if ! test -d $OUTPUT_GIT_DIR; then
 	setup_dotfiles_repo
-else; then
+elif; then
 	# TODO: this will bite me is the tush...should handle more
 	# elegantly
 	echo "it appears that this is directory already exixts"
