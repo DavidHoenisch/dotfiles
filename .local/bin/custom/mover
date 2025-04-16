@@ -32,7 +32,7 @@ install_packages() {
 
     # Update system and install official repo packages
     echo "Installing packages from official repositories..."
-    sudo pacman -Syu --needed - < official_packages.txt
+    sudo pacman -Syu --needed --noconfirm - < official_packages.txt
 
     # Check if yay is installed, install it if not
     if ! command -v yay &> /dev/null; then
@@ -48,7 +48,7 @@ install_packages() {
     # Install AUR packages if the file exists
     if [[ -f aur_packages.txt && -s aur_packages.txt ]]; then
         echo "Installing AUR packages..."
-        yay -S --needed - < aur_packages.txt
+        yay -S --needed --noconfirm - < aur_packages.txt
     else
         echo "No AUR packages to install."
     fi
