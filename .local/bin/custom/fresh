@@ -43,7 +43,7 @@ for app in ${prereq[@]}; do
 		echo "installing $app"
 		install_prereq_apps "$app"
 	fi
-do
+done
 
 # now that we have the prereq apps, pull in the dotfiles
 # dir, but first check if is already present
