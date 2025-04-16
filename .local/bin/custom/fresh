@@ -73,7 +73,7 @@ if ! command -v pipx &> /dev/null; then
 	source $HOME/.bashrc
 fi
 
-if ! command gnome-settings-cli &> /dev/null; then
+if ! command gnome-extensions-cli &> /dev/null; then
 	install_pipx_tools
 fi
 
