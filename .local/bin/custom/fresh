@@ -18,7 +18,7 @@ function setup_dotfiles_repo() {
 
 	# Clone the dotfiles repo
 	git clone --depth=1 "$DOTFILES_GITHUB_REPO" "$OUTPUT_GIT_DIR"
-	(cd "$OUTPUT_GIT_DIR" && stow .)
+	(cd $OUTPUT_GIT_DIR && stow .)
 }
 
 function install_yay() {
@@ -54,7 +54,7 @@ else
 	# elegantly
 	echo "it appears that this is directory already exixts"
 	mkdir -p $HOME/bkup
-	mv $DOTFILES_GITHUB_REPO $HOME/mkup/
+	mv $DOTFILES_GITHUB_REPO $HOME/bkup/
 	setup_dotfiles_repo
 fi
 
@@ -69,12 +69,12 @@ fi
 # exists first, then installing all the stuff required
 if ! command -v pipx &> /dev/null; then
 	yay -Sy --noconfirm --needed python-pipx
-	pipx ensurepath
-	source $HOME/.bashrc
 fi
 
 if ! command gnome-extensions-cli &> /dev/null; then
 	install_pipx_tools
+	pipx ensurepath
+	source $HOME/.bashrc
 fi
 
 # Now that we have all those tools installed, lets setup
