@@ -22,7 +22,6 @@ alias gr="goreleaser"
 alias rm="echo Use 'rip' instead of rm."
 alias cst="container-structure-test"
 alias n="nvim"
-alias hx="helix"
 alias mp="multipass"
 alias getx="gnome-extensions-cli"
 

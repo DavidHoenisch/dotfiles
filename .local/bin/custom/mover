@@ -17,8 +17,8 @@ export_packages() {
     echo "AUR packages exported to aur_packages.txt"
 }
 
-# Function to install packages on a new system
-install_packages() {
+# Function to install Arch packages
+install_arch_packages() {
     echo "Installing packages..."
 
     # Check if files exist
@@ -54,6 +54,36 @@ install_packages() {
     fi
 
     echo "Package installation complete!"
+
+}
+
+install_nix_packages() {
+    # Install Nix packages if the file exists
+    if [[ -f nix_packages.txt && -s nix_packages.txt ]]; then
+        echo "Installing Nix packages..."
+        for package in $(cat nix_packages.txt); do
+            nix-env -iA nixpkgs.$package
+        done
+    else
+        echo "No Nix packages to install."
+    fi
+}
+
+# Function to install packages on a new system
+install_packages() {
+
+    case "$1" in
+        arch)
+            install_arch_packages
+            ;;
+        nix)
+            install_nix_packages
+            ;;
+        *)
+            echo "Usage: $0 {arch|nix}"
+            exit 1
+            ;;
+    esac
 }
 
 # Main script logic
@@ -62,12 +92,14 @@ case "$1" in
         export_packages
         ;;
     install)
-        install_packages
+        install_packages $2
         ;;
     *)
         echo "Usage: $0 {export|install}"
         echo "  export: Save installed packages to files"
         echo "  install: Install packages from saved files"
+        echo "      arch: Install Arch packages"
+        echo "      nix: Install Nix packages"
         exit 1
         ;;
 esac
