@@ -1,10 +1,12 @@
 appindicatorsupport@rgcjonas.gmail.com
 auto-move-windows@gnome-shell-extensions.gcampax.github.com
+ding@rastersoft.com
 gnome-ui-tune@itstime.tech
 just-perfection-desktop@just-perfection
 legacyschemeautoswitcher@joshimukul29.gmail.com
 space-bar@luchrioh
 tactile@lundal.io
+tiling-assistant@ubuntu.com
 tophat@fflewddur.github.io
-user-theme@gnome-shell-extensions.gcampax.github.com
+ubuntu-dock@ubuntu.com
 x11gestures@joseexposito.github.io

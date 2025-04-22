@@ -5,6 +5,10 @@ keyrings-selected=['secret-service:///org/freedesktop/secrets/collection/login']
 height=476
 width=1214
 
+[apps/update-manager]
+launch-count=1
+launch-time=int64 1744984471
+
 [com/github/maoschanz/drawing]
 last-active-tool='pencil'
 last-version='1.0.2'
@@ -20,6 +24,9 @@ last-shape-filling='empty'
 last-size=2
 last-text-background='thin-outline'
 use-antialiasing=true
+
+[com/ubuntu/update-notifier]
+release-check-time=uint32 1744955391
 
 [dev/geopjr/Collision]
 is-maximized=false
@@ -47,6 +54,7 @@ window-size=[1722, 804]
 [org/gnome/Snapshot]
 capture-mode='video'
 is-maximized=false
+last-camera-id='C922 Pro Stream Webcam (V4L2)'
 window-height=640
 window-width=800
 
@@ -67,10 +75,20 @@ window-maximized=true
 window-position=[35, 32]
 window-size=[1717, 1009]
 
+[org/gnome/calculator]
+base=10
+button-mode='basic'
+source-currency=''
+source-units='degree'
+target-currency=''
+target-units='radian'
+window-maximized=false
+window-size=(484, 616)
+
 [org/gnome/calendar]
 active-view='month'
 window-maximized=false
-window-size=(768, 600)
+window-size=(1192, 824)
 
 [org/gnome/clocks]
 world-clocks=[{'location': <(uint32 2, <('Coordinated Universal Time (UTC)', '@UTC', false, @a(dd) [], @a(dd) [])>)>}]
@@ -81,12 +99,35 @@ panel-id='world'
 size=(870, 690)
 
 [org/gnome/control-center]
-last-panel='power'
-window-state=(1920, 845, true)
+last-panel='display'
+window-state=(1494, 845, true)
 
 [org/gnome/deja-dup]
 backend='google'
 prompt-check='2025-04-11T21:24:16.122113Z'
+
+[org/gnome/desktop/app-folders]
+folder-children=['System', 'Utilities', 'YaST', 'Pardus']
+
+[org/gnome/desktop/app-folders/folders/Pardus]
+categories=['X-Pardus-Apps']
+name='X-Pardus-Apps.directory'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/System]
+apps=['nm-connection-editor.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.baobab.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.Logs.desktop', 'org.gnome.Sysprof.desktop', 'org.gnome.SystemMonitor.desktop']
+name='X-GNOME-Shell-System.directory'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/Utilities]
+apps=['org.gnome.FileRoller.desktop', 'org.gnome.font-viewer.desktop', 'org.gnome.seahorse.Application.desktop']
+name='X-GNOME-Shell-Utilities.directory'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/YaST]
+categories=['X-SuSE-YaST']
+name='suse-yast.directory'
+translate=true
 
 [org/gnome/desktop/app-folders/folders/accessories]
 apps=['yad-icon-browser.desktop', 'de.haeckerfelix.Fragments.desktop']
@@ -115,8 +156,8 @@ translate=true
 [org/gnome/desktop/background]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///home/dhoenisch/.local/share/backgrounds/2025-04-13-21-52-53-drone-wallpaper.jpg'
-picture-uri-dark='file:///home/dhoenisch/.local/share/backgrounds/2025-04-13-21-52-53-drone-wallpaper.jpg'
+picture-uri='file:///home/dhoenisch/.local/share/backgrounds/2025-04-17-23-08-18-drone-wallpaper.jpg'
+picture-uri-dark='file:///home/dhoenisch/.local/share/backgrounds/2025-04-17-23-08-18-drone-wallpaper.jpg'
 primary-color='#000000000000'
 secondary-color='#000000000000'
 
@@ -134,15 +175,32 @@ xkb-options=['lv3:ralt_switch']
 
 [org/gnome/desktop/interface]
 accent-color='slate'
+color-scheme='prefer-dark'
 enable-animations=true
+gtk-theme='Yaru-sage-dark'
 show-battery-percentage=true
 toolkit-accessibility=false
 
 [org/gnome/desktop/notifications]
-application-children=['org-manjaro-pamac-manager', 'zen', 'gnome-power-panel', 'discord', 'signal-desktop', 'org-gnome-rhythmbox3', 'org-gnome-lollypop', 'org-telegram-desktop', 'mailspring', 'org-gnome-boxes', 'io-github-sigmasd-stimulator', 'org-gnome-nautilus']
+application-children=['org-manjaro-pamac-manager', 'zen', 'gnome-power-panel', 'discord', 'signal-desktop', 'org-gnome-rhythmbox3', 'org-gnome-lollypop', 'org-telegram-desktop', 'mailspring', 'org-gnome-boxes', 'io-github-sigmasd-stimulator', 'org-gnome-nautilus', 'com-mattjakeman-extensionmanager', 'com-discordapp-discord', 'firefox-firefox', 'org-signal-signal', 'thunderbird-thunderbird', 'org-librepcb-librepcb', 'app-zen-browser-zen', 'dev-zed-zed']
+
+[org/gnome/desktop/notifications/application/app-zen-browser-zen]
+application-id='app.zen_browser.zen.desktop'
+
+[org/gnome/desktop/notifications/application/com-discordapp-discord]
+application-id='com.discordapp.Discord.desktop'
+
+[org/gnome/desktop/notifications/application/com-mattjakeman-extensionmanager]
+application-id='com.mattjakeman.ExtensionManager.desktop'
+
+[org/gnome/desktop/notifications/application/dev-zed-zed]
+application-id='dev.zed.Zed.desktop'
 
 [org/gnome/desktop/notifications/application/discord]
 application-id='discord.desktop'
+
+[org/gnome/desktop/notifications/application/firefox-firefox]
+application-id='firefox_firefox.desktop'
 
 [org/gnome/desktop/notifications/application/gnome-power-panel]
 application-id='gnome-power-panel.desktop'
@@ -165,14 +223,23 @@ application-id='org.gnome.Nautilus.desktop'
 [org/gnome/desktop/notifications/application/org-gnome-rhythmbox3]
 application-id='org.gnome.Rhythmbox3.desktop'
 
+[org/gnome/desktop/notifications/application/org-librepcb-librepcb]
+application-id='org.librepcb.LibrePCB.desktop'
+
 [org/gnome/desktop/notifications/application/org-manjaro-pamac-manager]
 application-id='org.manjaro.pamac.manager.desktop'
+
+[org/gnome/desktop/notifications/application/org-signal-signal]
+application-id='org.signal.Signal.desktop'
 
 [org/gnome/desktop/notifications/application/org-telegram-desktop]
 application-id='org.telegram.desktop.desktop'
 
 [org/gnome/desktop/notifications/application/signal-desktop]
 application-id='signal-desktop.desktop'
+
+[org/gnome/desktop/notifications/application/thunderbird-thunderbird]
+application-id='thunderbird_thunderbird.desktop'
 
 [org/gnome/desktop/notifications/application/zen]
 application-id='zen.desktop'
@@ -189,19 +256,28 @@ secondary-button-action='middle'
 [org/gnome/desktop/peripherals/tablets/056a:037a]
 keep-aspect=true
 left-handed=true
+output=['SAM', 'LF24T35', 'HCNR812809', 'DP-1']
 
 [org/gnome/desktop/peripherals/touchpad]
+click-method='fingers'
 two-finger-scrolling-enabled=true
 
 [org/gnome/desktop/screensaver]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///home/dhoenisch/.local/share/backgrounds/2025-04-13-21-52-53-drone-wallpaper.jpg'
+picture-uri='file:///home/dhoenisch/.local/share/backgrounds/2025-04-17-23-08-18-drone-wallpaper.jpg'
 primary-color='#000000000000'
 secondary-color='#000000000000'
 
 [org/gnome/desktop/search-providers]
 sort-order=['org.gnome.Settings.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Nautilus.desktop']
+
+[org/gnome/desktop/session]
+idle-delay=uint32 900
+
+[org/gnome/desktop/sound]
+event-sounds=false
+theme-name='__custom'
 
 [org/gnome/desktop/wm/keybindings]
 close=['<Shift><Alt>q']
@@ -255,14 +331,19 @@ zoom-level=16
 
 [org/gnome/mutter]
 dynamic-workspaces=false
+edge-tiling=false
 overlay-key='Super'
+
+[org/gnome/mutter/keybindings]
+toggle-tiled-left=@as []
+toggle-tiled-right=@as []
 
 [org/gnome/nautilus/list-view]
 default-column-order=['name', 'size', 'type', 'owner', 'group', 'permissions', 'date_modified', 'date_accessed', 'date_created', 'recency', 'detailed_type']
 default-visible-columns=['name', 'size', 'date_modified']
 
 [org/gnome/nautilus/preferences]
-default-folder-viewer='list-view'
+default-folder-viewer='icon-view'
 migrated-gtk-settings=true
 search-filter-time-type='last_modified'
 
@@ -271,17 +352,66 @@ initial-size=(1571, 741)
 initial-size-file-chooser=(890, 550)
 maximized=true
 
+[org/gnome/portal/filechooser/app.zen_browser.zen]
+last-folder-path='/home/dhoenisch/Documents/Books'
+
+[org/gnome/portal/filechooser/com.makemkv.MakeMKV]
+last-folder-path='/media/dhoenisch/BAND_BROTHERS_D1/VIDEO_TS'
+
+[org/gnome/portal/filechooser/dev.zed.Zed]
+last-folder-path='/home/dhoenisch/.local/bin/custom'
+
 [org/gnome/portal/filechooser/md.obsidian.Obsidian]
 last-folder-path='/home/dhoenisch/Documents/Personal'
 
+[org/gnome/portal/filechooser/org.gnome.Builder]
+last-folder-path='/home/dhoenisch/Code/Alpaca'
+
 [org/gnome/portal/filechooser/org.gnome.Settings]
 last-folder-path='/home/dhoenisch/Pictures/Wallpapers'
+
+[org/gnome/portal/filechooser/org.telegram.desktop]
+last-folder-path='/home/dhoenisch/Documents/Books'
+
+[org/gnome/portal/filechooser/org.videolan.VLC]
+last-folder-path='/media/dhoenisch/WWII The Complete History'
+
+[org/gnome/rhythmbox]
+maximized=true
+position=(0, 0)
+size=(1920, 1001)
+
+[org/gnome/rhythmbox/library/source]
+paned-position=550
+show-browser=true
+
+[org/gnome/rhythmbox/player]
+volume=1.0
+
+[org/gnome/rhythmbox/plugins]
+active-plugins=['notification', 'android', 'audiocd', 'rb', 'alternative-toolbar', 'iradio', 'generic-player', 'daap', 'mpris', 'audioscrobbler', 'ipod', 'dbus-media-server', 'mtpdevice', 'power-manager', 'artsearch']
+seen-plugins=['notification', 'rb', 'alternative-toolbar', 'lyrics', 'webremote', 'fmradio', 'pythonconsole', 'grilo', 'daap', 'audioscrobbler', 'ipod', 'dbus-media-server', 'rblirc', 'mtpdevice', 'replaygain', 'magnatune', 'artsearch', 'listenbrainz', 'im-status']
+
+[org/gnome/rhythmbox/plugins/alternative_toolbar]
+show-source-toolbar=false
+
+[org/gnome/rhythmbox/plugins/audioscrobbler/Last.fm]
+scrobbling-enabled=true
+
+[org/gnome/rhythmbox/plugins/audioscrobbler/Libre.fm]
+scrobbling-enabled=true
+
+[org/gnome/rhythmbox/plugins/iradio]
+initial-stations-loaded=true
+
+[org/gnome/rhythmbox/rhythmdb]
+locations=['file:///home/dhoenisch/Music']
 
 [org/gnome/settings-daemon/plugins/color]
 night-light-enabled=true
 night-light-schedule-automatic=false
 night-light-schedule-from=6.0
-night-light-temperature=uint32 3282
+night-light-temperature=uint32 2782
 
 [org/gnome/settings-daemon/plugins/media-keys]
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
@@ -292,12 +422,17 @@ binding='<Alt>Return'
 command='ghostty'
 name='ghostty terminal'
 
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-timeout=3600
+sleep-inactive-ac-type='nothing'
+
 [org/gnome/shell]
 app-picker-layout=[{'accessories': <{'position': <0>}>, 'dev.qwery.AddWater.desktop': <{'position': <1>}>, 'org.gnome.Snapshot.desktop': <{'position': <2>}>, 'me.dusansimic.DynamicWallpaper.desktop': <{'position': <3>}>, 'org.gnome.Maps.desktop': <{'position': <4>}>, 'games': <{'position': <5>}>, 'org.gnome.gThumb.desktop': <{'position': <6>}>, 'org.gnome.Totem.desktop': <{'position': <7>}>, 'gnome-layouts.desktop': <{'position': <8>}>, 'org.gnome.Lollypop.desktop': <{'position': <9>}>, 'simple-scan.desktop': <{'position': <10>}>, 'office': <{'position': <11>}>, 'system-tools': <{'position': <12>}>, 'org.mozilla.Thunderbird.desktop': <{'position': <13>}>, 'webapp-manager.desktop': <{'position': <14>}>}]
 disabled-extensions=['forge@jmmaranan.com', 'arcmenu@arcmenu.com', 'pamac-updates@manjaro.org', 'dash-to-dock@micxgx.gmail.com', 'dash-to-panel@jderose9.github.com', 'highlight-focus@pimsnel.com', 'status-icons@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com']
-enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'legacyschemeautoswitcher@joshimukul29.gmail.com', 'x11gestures@joseexposito.github.io', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'just-perfection-desktop@just-perfection', 'gnome-ui-tune@itstime.tech', 'space-bar@luchrioh', 'switcher@landau.fi', 'tophat@fflewddur.github.io', 'tactile@lundal.io']
-favorite-apps=['org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'zen.desktop', 'com.mitchellh.ghostty.desktop']
+enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com', 'legacyschemeautoswitcher@joshimukul29.gmail.com', 'x11gestures@joseexposito.github.io', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'just-perfection-desktop@just-perfection', 'space-bar@luchrioh', 'switcher@landau.fi', 'tophat@fflewddur.github.io', 'tactile@lundal.io', 'ding@rastersoft.com', 'ubuntu-dock@ubuntu.com', 'tiling-assistant@ubuntu.com', 'gnome-ui-tune@itstime.tech']
+favorite-apps=['org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'app.zen_browser.zen.desktop']
 last-selected-power-profile='performance'
+remember-mount-password=false
 welcome-dialog-last-shown-version='47.2'
 
 [org/gnome/shell/extensions/arcmenu]
@@ -306,15 +441,18 @@ search-entry-border-radius=(true, 25)
 update-notifier-project-version=65
 
 [org/gnome/shell/extensions/auto-move-windows]
-application-list=['com.mitchellh.ghostty.desktop:1', 'zen.desktop:2', 'signal-desktop.desktop:4', 'org.telegram.desktop.desktop:4', 'discord.desktop:4', 'md.obsidian.Obsidian.desktop:5']
+application-list=['org.telegram.desktop.desktop:4', 'md.obsidian.Obsidian.desktop:5', 'app.zen_browser.zen.desktop:2', 'org.signal.Signal.desktop:4', 'com.discordapp.Discord.desktop:4']
 
 [org/gnome/shell/extensions/dash-to-dock]
 background-opacity=1.0
-dash-max-icon-size=28
-dock-position='TOP'
+dash-max-icon-size=34
+dock-fixed=false
+dock-position='BOTTOM'
+extend-height=false
 height-fraction=1.0
 preferred-monitor=-2
-preferred-monitor-by-connector='DP-1'
+preferred-monitor-by-connector='primary'
+show-mounts=false
 
 [org/gnome/shell/extensions/dash-to-panel]
 animate-appicon-hover-animation-extent={'RIPPLE': 4, 'PLANK': 4, 'SIMPLE': 1}
@@ -334,6 +472,10 @@ trans-gradient-bottom-opacity=0.050000000000000003
 trans-gradient-top-opacity=0.59999999999999998
 trans-use-custom-gradient=true
 window-preview-title-position='TOP'
+
+[org/gnome/shell/extensions/ding]
+check-x11wayland=true
+show-home=false
 
 [org/gnome/shell/extensions/forge]
 css-last-update=uint32 37
@@ -402,6 +544,12 @@ row-1=1
 show-tiles=['<Alt>w']
 text-color='rgb(255,2,2)'
 
+[org/gnome/shell/extensions/tiling-assistant]
+focus-hint-color='rgb(101,123,105)'
+last-version-installed=51
+overridden-settings={'org.gnome.mutter.edge-tiling': <@mb nothing>, 'org.gnome.mutter.keybindings.toggle-tiled-left': <@mb nothing>, 'org.gnome.mutter.keybindings.toggle-tiled-right': <@mb nothing>}
+tiling-popup-all-workspace=true
+
 [org/gnome/shell/extensions/tophat]
 mount-to-monitor='/'
 show-disk=true
@@ -410,12 +558,46 @@ show-disk=true
 focus-active-notification=['<Alt>n']
 toggle-application-view=['<Alt>d']
 
+[org/gnome/shell/ubuntu]
+startup-sound='warty-startup'
+
 [org/gnome/shell/weather]
 automatic-location=true
 locations=[<(uint32 2, <('Pullman / Moscow, Pullman / Moscow Regional Airport', 'KPUW', false, [(0.81583476823675971, -2.043950234995239)], @a(dd) [])>)>]
 
 [org/gnome/shell/world-clocks]
 locations=[<(uint32 2, <('Coordinated Universal Time (UTC)', '@UTC', false, @a(dd) [], @a(dd) [])>)>]
+
+[org/gnome/shotwell/preferences/export]
+constraint='ORIGINAL'
+export-format-mode='CURRENT'
+export-metadata=true
+photo-file-format='JFIF'
+quality='HIGH'
+scale=1200
+
+[org/gnome/shotwell/preferences/ui]
+display-basic-properties=true
+display-extended-properties=false
+display-photo-comments=false
+display-photo-ratings=true
+display-photo-tags=true
+display-photo-titles=false
+display-search-bar=false
+display-sidebar=true
+events-sort-ascending=false
+library-photos-sort-ascending=false
+library-photos-sort-by=2
+show-welcome-dialog=false
+sidebar-position=180
+
+[org/gnome/shotwell/preferences/window]
+library-height=824
+library-maximize=false
+library-width=1340
+
+[org/gnome/terminal/legacy]
+menu-accelerator-enabled=false
 
 [org/gnome/tweaks]
 show-extensions-notice=false
@@ -425,7 +607,7 @@ custom-colors=[(1.0, 0.0066666603088378906, 0.0066666603088378906, 1.0), (1.0, 0
 selected-color=(true, 1.0, 0.0066666603088378906, 0.0066666603088378906, 1.0)
 
 [org/gtk/gtk4/settings/file-chooser]
-show-hidden=false
+show-hidden=true
 sort-directories-first=false
 
 [org/gtk/settings/color-chooser]
@@ -435,7 +617,7 @@ selected-color=(true, 0.80000000000000004, 0.0, 0.0, 1.0)
 [org/gtk/settings/file-chooser]
 date-format='regular'
 location-mode='path-bar'
-show-hidden=false
+show-hidden=true
 show-size-column=true
 show-type-column=true
 sidebar-width=171
@@ -443,5 +625,5 @@ sort-column='name'
 sort-directories-first=false
 sort-order='ascending'
 type-format='category'
-window-position=(358, 93)
+window-position=(26, 23)
 window-size=(1203, 902)

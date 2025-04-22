@@ -1,7 +1,5 @@
 1password
 7zip
-alsa-firmware
-alsa-utils
 ansible
 arandr
 arj
@@ -127,7 +125,7 @@ librsvg
 licenses
 linux-firmware
 linux-zen
-linux-zen-headers
+linux-zen-headersj
 logrotate
 lrzip
 lsb-release
