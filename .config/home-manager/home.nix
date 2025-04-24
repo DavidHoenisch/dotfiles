@@ -34,7 +34,7 @@
     container-structure-test
     devpod
     direnv
-    docker
+    dive
     doctl
     eza
     feh
