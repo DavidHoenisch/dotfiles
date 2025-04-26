@@ -1,0 +1,8 @@
+#!/bin/bash
+
+TEMP="ips.txt"
+
+tshark -r 2022-11-03-Emotet-epoch4-infection-with-IcedID.pcap -T fields -e ip.src >> $TEMP
+tshark -r 2022-11-03-Emotet-epoch4-infection-with-IcedID.pcap -T fields -e ip.dst >> $TEMP
+
+cat $TEMP | sort -u

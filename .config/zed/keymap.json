@@ -1,0 +1,41 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "space s f": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      // "j k": ["workspace::SendKeystrokes", "escape"]
+      "space s f": "file_finder::Toggle",
+      "space s g": "pane::DeploySearch",
+      "space r n": "editor::Rename",
+
+      // LSP nav items
+      "space g I": "editor::GoToImplementation",
+      "space g d": "editor::GoToDefinition",
+
+      // Terminal
+      "space t t": "workspace::NewTerminal",
+
+      // Git methods
+      "space g f": "git_panel::ToggleFocus",
+      "space g m": "git::GenerateCommitMessage",
+      "space g c": "git_panel::Close",
+
+      // AI methods
+      "space a n": "assistant::NewChat",
+      "space a a": "assistant::ToggleFocus"
+      //"space  z z": ""
+    }
+  }
+]

@@ -84,6 +84,7 @@
     starship
     syft
     termshark
+    tshark
     tmux
     tmuxifier
     virtualenv
