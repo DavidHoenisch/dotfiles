@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Settings for compression
+VIDEO_CODEC="libx265"
+CRF=23  # Lower for higher quality, higher for smaller size (18-28 range)
+PRESET="medium"  # Options: ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow
+AUDIO_CODEC="aac"  # Use 'libfdk_aac' if available for better quality
+AUDIO_BITRATE="192k"  # 128k-192k for stereo, 256k-384k for surround
+
+# Loop through all .mkv files in the current directory
+for file in *.mkv; do
+    # Check if any .mkv files exist
+    if [[ -f "$file" ]]; then
+        # Get the filename without the extension
+        filename=$(basename "$file" .mkv)
+
+        # Convert mkv to mp4 with compression
+        ffmpeg -i "$file" -c:v "$VIDEO_CODEC" -crf "$CRF" -preset "$PRESET" -c:a "$AUDIO_CODEC" -b:a "$AUDIO_BITRATE" "${filename}.mp4"
+
+        # Check if conversion was successful
+        if [[ $? -eq 0 ]]; then
+            echo "Successfully converted $file to ${filename}.mp4"
+        else
+            echo "Error converting $file"
+        fi
+    fi
+done
+
+# Check if no mkv files were found
+if [[ ! -f *.mkv ]]; then
+    echo "No .mkv files found in the current directory"
+fi

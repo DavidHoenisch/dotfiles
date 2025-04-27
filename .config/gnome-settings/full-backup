@@ -320,7 +320,7 @@ window-height=480
 window-width=989
 
 [org/gnome/gnome-system-monitor]
-current-tab='processes'
+current-tab='resources'
 maximized=false
 show-dependencies=false
 show-whose-processes='user'
@@ -354,14 +354,14 @@ default-column-order=['name', 'size', 'type', 'owner', 'group', 'permissions', '
 default-visible-columns=['name', 'size', 'date_modified']
 
 [org/gnome/nautilus/preferences]
-default-folder-viewer='icon-view'
+default-folder-viewer='list-view'
 migrated-gtk-settings=true
 search-filter-time-type='last_modified'
 
 [org/gnome/nautilus/window-state]
 initial-size=(1571, 741)
 initial-size-file-chooser=(890, 550)
-maximized=true
+maximized=false
 
 [org/gnome/nm-applet/eap/90de8187-7cef-47cc-bd02-91fd62a90925]
 ignore-ca-cert=false
@@ -371,7 +371,7 @@ ignore-phase2-ca-cert=false
 last-folder-path='/home/dhoenisch/Documents/Books'
 
 [org/gnome/portal/filechooser/com.makemkv.MakeMKV]
-last-folder-path='/media/dhoenisch/BAND_BROTHERS_D1/VIDEO_TS'
+last-folder-path='/home/dhoenisch/Videos/movies/Parks & Rec/Season 1'
 
 [org/gnome/portal/filechooser/dev.zed.Zed]
 last-folder-path='/home/dhoenisch/Code/chx'
