@@ -320,7 +320,7 @@ window-height=480
 window-width=989
 
 [org/gnome/gnome-system-monitor]
-current-tab='resources'
+current-tab='processes'
 maximized=false
 show-dependencies=false
 show-whose-processes='user'
@@ -354,21 +354,21 @@ default-column-order=['name', 'size', 'type', 'owner', 'group', 'permissions', '
 default-visible-columns=['name', 'size', 'date_modified']
 
 [org/gnome/nautilus/preferences]
-default-folder-viewer='list-view'
+default-folder-viewer='icon-view'
 migrated-gtk-settings=true
 search-filter-time-type='last_modified'
 
 [org/gnome/nautilus/window-state]
 initial-size=(1571, 741)
 initial-size-file-chooser=(890, 550)
-maximized=false
+maximized=true
 
 [org/gnome/nm-applet/eap/90de8187-7cef-47cc-bd02-91fd62a90925]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
 [org/gnome/portal/filechooser/app.zen_browser.zen]
-last-folder-path='/home/dhoenisch/Documents/Books'
+last-folder-path='/home/dhoenisch/Documents/Personal'
 
 [org/gnome/portal/filechooser/com.makemkv.MakeMKV]
 last-folder-path='/home/dhoenisch/Videos/movies/Parks & Rec/Season 1'
