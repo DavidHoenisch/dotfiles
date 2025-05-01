@@ -23,6 +23,7 @@
       // LSP nav items
       "space g I": "editor::GoToImplementation",
       "space g d": "editor::GoToDefinition",
+      "K": "editor::Hover",
 
       // Terminal
       "space t t": "workspace::NewTerminal",
@@ -34,7 +35,8 @@
 
       // AI methods
       "space a n": "assistant::NewChat",
-      "space a a": "assistant::ToggleFocus"
+      "space a a": "assistant::ToggleFocus",
+      "space a I": "assistant::InlineAssist"
       //"space  z z": ""
     }
   }

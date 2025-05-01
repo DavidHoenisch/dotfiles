@@ -5,7 +5,7 @@
   "theme": {
     "mode": "system",
     "light": "Tokyo Night Light",
-    "dark": "Tokyo Night"
+    "dark": "Everforest Dark"
   },
   "buffer_font_family": "FiraCode Nerd Font Mono",
   "tabs": {
@@ -112,7 +112,7 @@
   },
   "tab_bar": {
     "show_tab_bar_buttons": false,
-    "show": true,
+    "show": false,
     "show_nav_history_buttons": false
   },
   "centered_layout": {
@@ -176,13 +176,13 @@
     }
   },
   "toolbar": {
-    "breadcrumbs": false,
+    "breadcrumbs": true,
     "quick_actions": false,
     "selections_menu": false
   },
   "assistant": {
     "version": "2",
-    "enabled": false
+    "enabled": true
   },
   "outline_panel": {
     "button": false
@@ -217,7 +217,7 @@
     "line_height": "comfortable",
     "toolbar": {
       "title": false,
-      "breadcrumbs": false
+      "breadcrumbs": true
     }
   }
 }

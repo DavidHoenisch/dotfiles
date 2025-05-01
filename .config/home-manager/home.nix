@@ -36,6 +36,7 @@
     direnv
     dive
     doctl
+    eget
     eza
     feh
     ffmpeg
@@ -44,6 +45,7 @@
     fx
     fzf
     gh
+    ghostty
     glibcLocales
     go
     go-task
@@ -62,6 +64,7 @@
     kubernetes-helm
     libgcc
     linode-cli
+    lldb
     neovim
     nmap
     nodejs_23
@@ -76,6 +79,7 @@
     pyright
     python312Packages.pip
     rip2
+    rust-analyzer
     serpl
     silicon
     skaffold
@@ -83,10 +87,11 @@
     sops
     starship
     syft
+    talosctl
     termshark
-    tshark
     tmux
     tmuxifier
+    tshark
     virtualenv
     watchexec
     wezterm
@@ -96,7 +101,6 @@
     yt-dlp
     zoxide
     zsh
-
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -151,4 +155,9 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.git = {
+     enable = true;
+     userName = "DavidHoenisch";
+     userEmail = "dh1689@pm.me";
+   };
 }

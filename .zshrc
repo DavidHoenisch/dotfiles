@@ -189,6 +189,7 @@ export FUZ_EDITOR=nvim
 eval "$(atuin init zsh)"
 
 export PATH="$PATH:$HOME/.local/bin/custom/"
+export PATH="$PATH:$HOME/.cargo/bin"
 export ATAC_KEY_BINDINGS=/home/dhoenisch/.config/atac/vim_key_bindings.toml
 export ATAC_MAIN_DIR=/home/dhoenisch/.config/atac/
 
