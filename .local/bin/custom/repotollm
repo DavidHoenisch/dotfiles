@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Start from the current git working directory
+GIT_DIR=$(git rev-parse --show-toplevel)
+
+# Check if we're in a git repository
+if [ $? -ne 0 ]; then
+    echo "Error: Not in a git repository"
+    exit 1
+fi
+
+# Find all files in the git directory, excluding .git folder
+find "$GIT_DIR" -type f -not -path "$GIT_DIR/.git/*" | while read -r file; do
+    # Get relative path from git root
+    rel_path=$(realpath --relative-to="$GIT_DIR" "$file")
+
+    # Print file path and contents
+    echo ">>> $rel_path"
+    cat "$file"
+    echo -e "\n"
+done

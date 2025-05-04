@@ -31,7 +31,9 @@
     cargo
     chafa
     chezmoi
+    cobra-cli
     container-structure-test
+    cosign
     devpod
     direnv
     dive
@@ -61,7 +63,9 @@
     kitty
     ko
     kompose
+    kubectl
     kubernetes-helm
+    lazygit
     libgcc
     linode-cli
     lldb
@@ -75,6 +79,7 @@
     podman-desktop
     poetry
     portal
+    pwgen
     pyenv
     pyright
     python312Packages.pip

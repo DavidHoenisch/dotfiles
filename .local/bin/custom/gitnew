@@ -1,0 +1,14 @@
+#!/bin/bash
+
+GITIGNORE="https://gist.githubusercontent.com/DavidHoenisch/b7c7b5025f3426bd756e45c25befb2ee/raw/619889b6f5e5d8a351bc54b7662bf81f1b53cc10/gitignore"
+GITFIRSTMESSAGE="GENESIS: let there be light"
+
+git init
+
+touch README.md
+
+curl -fsSL $GITIGNORE -o .gitignore
+
+git add README.md .gitignore
+
+git commit -m "$GITFIRSTMESSAGE"

@@ -1,11 +1,13 @@
-#!/bin/bash 
+#!/bin/bash
 
-file=$(/bin/eza -liR ~/.local/bin | awk '{print $8}' | xargs -I{} realpath $HOME/.local/bin/{} | fzf --preview='bat --theme=1337 {}')
+EZA=$(which eza)
+
+file=$($EZA -liR ~/.local/bin/custom | awk '{print $8}' | xargs -I{} realpath $HOME/.local/bin/custom/{} | fzf --preview='bat --theme=1337 {}')
 
 
-if [[ $file == "" ]] 
+if [[ $file == "" ]]
 then
 	exit 1
 else
-	$file 
+	$file
 fi
