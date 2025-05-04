@@ -40,6 +40,7 @@
     doctl
     eget
     eza
+    fd
     feh
     ffmpeg
     flatpak-builder
@@ -84,6 +85,7 @@
     pyright
     python312Packages.pip
     rip2
+    ripgrep
     rust-analyzer
     serpl
     silicon

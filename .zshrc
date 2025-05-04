@@ -204,3 +204,4 @@ export PATH=$PATH:$GOBIN
 source ~/.zsh_completions/_chx
 
 eval "$(direnv hook zsh)"
+source <(kubectl completion zsh)
