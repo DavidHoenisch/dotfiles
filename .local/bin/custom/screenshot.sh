@@ -1,23 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Directory where screenshots will be saved
-screenshot_dir="$HOME/Pictures/Screenshots"
+# Exit on any error
+set -e
 
-# Create the directory if it doesn't exist
-mkdir -p "$screenshot_dir"
+# Directory for screenshots
+SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
+mkdir -p "$SCREENSHOT_DIR"
 
-# Filename format: screenshot_YYYY-MM-DD_HH-MM-SS.png
-filename="screenshot_$(date '+%Y-%m-%d_%H-%M-%S').png"
+# Generate filename with timestamp
+FILENAME="screenshot_$(date '+%Y-%m-%d_%H-%M-%S').png"
+FILEPATH="$SCREENSHOT_DIR/$FILENAME"
 
-# Full path to the screenshot file
-filepath="$screenshot_dir/$filename"
+# Capture screenshot of selected area
+if ! grim -g "$(slurp)" "$FILEPATH"; then
+    exit 1  # Exit if slurp is canceled (e.g., Escape key)
+fi
 
-# Take the screenshot of a selected area using grim and save it to the file
-grim -g "$(slurp)" "$filepath"
+# Copy screenshot to clipboard
+wl-copy < "$FILEPATH"
 
-# Copy the screenshot to the clipboard using wl-copy
-wl-copy < "$filepath"
-
-# Notify the user
-notify-send "Screenshot saved as $filename and copied to clipboard"
-
+# Show styled notification with screenshot as icon
+notify-send --icon="$FILEPATH" --urgency=normal --expire-time=5000 --hint=int:image-width:128 "Screenshot" "Saved as $FILENAME and copied to clipboard"

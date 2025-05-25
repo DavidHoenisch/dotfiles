@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Iterate over all workspaces and close all windows
 swaymsg -t get_workspaces | jq -r '.[].name' | while read -r workspace; do
