@@ -1,0 +1,167 @@
+#!/usr/bin/python3
+
+import os
+import subprocess
+import sys
+import argparse
+import re
+import shutil
+
+# =====================================
+# CONFIGURABLE OPTIONS - EDIT THESE
+# =====================================
+MD_FILES = [
+    # Add your absolute paths to Markdown files here, in the desired PDF order
+    r"/home/dhoenisch/code/gryt.dev/README.md",
+    r"/home/dhoenisch/code/gryt.dev/CLOUD_INTEGRATION.md",
+    r"/home/dhoenisch/code/gryt.dev/PIPELINES.md",
+    r"/home/dhoenisch/code/gryt.dev/USAGE.md",
+    r"/home/dhoenisch/code/gryt.dev/WORKFLOWS.md",
+    r"/home/dhoenisch/code/gryt-cloud/CI_SYSTEM_DIAGRAM.md",
+]
+
+OUTPUT_PDF = "/home/dhoenisch/Documents/gryt_docs/gryt_docs.pdf"  # Output name
+
+PAGE_BREAKS = True
+ADD_TOC = True
+TITLE = "Gryt Documentation"
+
+COPY_IMAGES = True  # Auto-copy 🖼️ images (recommended)
+
+PDF_ENGINE = "weasyprint"
+MARGIN = "1in"
+PAPER_SIZE = "letter"
+# =====================================
+
+# Temps (fixed!)
+TEMP_MD = "temp_combined.md"
+TEMP_CSS = "temp_styles.css"
+TEMP_IMG_DIR = "temp_images"
+
+def fix_image_paths(content, base_dir, img_dir):
+    """🔧 Rewrite & copy images for PDF"""
+    def repl(match):
+        alt, path = match.groups()
+        if path.startswith(('http', '/')):
+            return match.group(0)
+        abs_path = os.path.normpath(os.path.join(base_dir, path))
+        if os.path.exists(abs_path):
+            dest = os.path.join(img_dir, os.path.basename(abs_path))
+            try:
+                shutil.copy2(abs_path, dest)
+            except:
+                pass
+            return f'![{alt}]({dest})'
+        return match.group(0)
+    return re.sub(r'!\[(.*?)\]\(([^)]+)\)', repl, content)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="MDs → PDF ✨")
+    parser.add_argument("files", nargs="*", help="Override MD_FILES list")
+    parser.add_argument("--nocopy-img", action="store_true", help="No image copy")
+    parser.add_argument("--no-toc", action="store_true", help="Disable TOC")
+    args = parser.parse_args()
+    
+    # Override from CLI
+    if args.files:
+        MD_FILES[:] = [os.path.abspath(f) for f in args.files]
+    
+    COPY_IMAGES = not args.nocopy_img
+    ADD_TOC = not args.no_toc
+
+    if not MD_FILES:
+        print("❌ Usage: gryt2pdf /path/to/*.md  OR edit MD_FILES")
+        sys.exit(1)
+
+    missing = [p for p in MD_FILES if not os.path.exists(p)]
+    if missing:
+        print("❌ Missing files:")
+        for p in missing: print(f"  {p}")
+        sys.exit(1)
+
+    print("🔄 Combining MDs...")
+    os.makedirs(TEMP_IMG_DIR, exist_ok=True)
+
+    with open(TEMP_MD, 'w', encoding='utf-8') as out:
+        if TITLE:
+            out.write(f"# {TITLE}\n\n")
+        
+        for i, md_path in enumerate(MD_FILES):
+            print(f"  📄 {os.path.basename(md_path)}")
+            base_dir = os.path.dirname(os.path.abspath(md_path))
+            with open(md_path, 'r', encoding='utf-8') as inp:
+                content = inp.read()
+            if COPY_IMAGES:
+                content = fix_image_paths(content, base_dir, TEMP_IMG_DIR)
+            out.write(content.rstrip() + "\n\n")
+            
+            if PAGE_BREAKS and i < len(MD_FILES)-1:
+                out.write('<div style="page-break-after: always; height: 0;"></div>\n\n')
+
+    print(f"✨ Converting → {OUTPUT_PDF} (WeasyPrint)")
+
+    # ✅ FIXED CSS f-string (doubled braces!)
+    css = f"""@page {{
+  margin: {MARGIN};
+  size: {PAPER_SIZE};
+}}
+body {{
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  font-size: 11pt;
+}}
+img {{
+  max-width: 100%;
+  height: auto;
+  page-break-inside: avoid;
+}}
+code {{
+  background: #f0f0f0;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}}
+pre {{
+  background: #f8f8f8;
+  padding: 1em;
+  overflow-x: auto;
+}}
+table {{
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}}
+th, td {{
+  border: 1px solid #ccc;
+  padding: 0.5em;
+}}
+h1, h2, h3 {{
+  page-break-after: avoid;
+}}"""
+    with open(TEMP_CSS, 'w') as f:
+        f.write(css)
+
+    cmd = [
+        "pandoc", TEMP_MD, "-o", OUTPUT_PDF,
+        "--pdf-engine=weasyprint",
+        "--css", TEMP_CSS,
+        "--standalone"
+    ]
+    if ADD_TOC:
+        cmd += ["--toc", "--toc-depth=4"]
+
+    try:
+        subprocess.run(cmd, check=True, capture_output=True)
+        print(f"✅ SUCCESS! 📖 {os.path.abspath(OUTPUT_PDF)}")
+        print(f"🎉 Open: evince {OUTPUT_PDF} &")
+    except FileNotFoundError:
+        print("❌ Install: sudo pacman -S weasyprint pandoc")
+        sys.exit(1)
+    except subprocess.CalledProcessError as e:
+        print("❌ Pandoc error:")
+        print(e.stderr.decode())
+        sys.exit(1)
+    finally:
+        for f in [TEMP_MD, TEMP_CSS]:
+            if os.path.exists(f): os.remove(f)
+        if os.path.exists(TEMP_IMG_DIR):
+            shutil.rmtree(TEMP_IMG_DIR)

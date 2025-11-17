@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat $1 | jq -r ".[].sha1" | parallel chx hash vthash --format > reports.md

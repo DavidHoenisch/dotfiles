@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Save the current working directory
+CURRENT=$PWD
+
+# Change to the directory containing your documents
+cd $HOME/Documents/Personal/
+
+# Use find to list all non-hidden files, and fzf to select one with a preview
+file=$(find . -type f -not -path '*/.*' | fzf --preview='bat --theme=1337 {}')
+
+# Check if a file was selected
+if [[ -z "$file" ]]; then
+    exit 1
+else
+    # Open the file in a floating tmux window with nvim
+    tmux popup -E -h 80% -w 80% -d $PWD "nvim '$file'"
+fi
+
+# Change back to the original directory
+cd $CURRENT
+

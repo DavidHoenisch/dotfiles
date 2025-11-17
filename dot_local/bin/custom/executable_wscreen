@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Detect connected displays
+PRIMARY_DISPLAY="eDP-1" # Internal display, change this if needed
+EXTERNAL_DISPLAY=$(swaymsg -t get_outputs | jq -r '.[] | select(.name != "'$PRIMARY_DISPLAY'" and .active == true) | .name')
+
+# Check if an external display is connected
+if [ -z "$EXTERNAL_DISPLAY" ]; then
+    echo "No external display detected. Launching applications on the primary display."
+else
+    echo "External display detected: $EXTERNAL_DISPLAY. Setting it up as primary display to the left of the internal display."
+    
+    # Get screen resolution of the primary display
+    PRIMARY_RES=$(swaymsg -t get_outputs | jq -r '.[] | select(.name == "'$PRIMARY_DISPLAY'") | .current_mode | "\(.width)x\(.height)"')
+    
+    # Get screen resolution of the external display
+    EXTERNAL_RES=$(swaymsg -t get_outputs | jq -r '.[] | select(.name == "'$EXTERNAL_DISPLAY'") | .current_mode | "\(.width)x\(.height)"')
+    
+    # Calculate the new position for the primary display (internal display)
+    EXTERNAL_WIDTH=$(echo $EXTERNAL_RES | cut -d 'x' -f 1)
+    
+    # Set the external display to the left of the primary display
+    swaymsg output $EXTERNAL_DISPLAY enable resolution $EXTERNAL_RES position 0 0
+    swaymsg output $PRIMARY_DISPLAY enable resolution $PRIMARY_RES position $EXTERNAL_WIDTH 0
+    
+    # Set gaps configuration
+    swaymsg gaps inner 10
+    swaymsg gaps outer 15
+    sleep 1.5
+fi
+
+# Function to launch an application in a specific workspace
+launch_in_workspace() {
+    local workspace=$1
+    local command=$2
+
+    swaymsg "workspace $workspace"
+    if [ -n "$EXTERNAL_DISPLAY" ]; then
+        swaymsg "move workspace to output $EXTERNAL_DISPLAY"
+    fi
+    swaymsg "exec $command"
+    sleep 2
+}
+
+# Launch applications in specific workspaces
+launch_in_workspace "number 1" "kitty"
+launch_in_workspace "number 2" "exec /usr/bin/brave-browser-stable"
+launch_in_workspace "number 3" "/home/dhoenisch/.nix-profile/bin/bitwarden"
+launch_in_workspace "number 4" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo"
+launch_in_workspace "number 5" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=ainjpeloaaccnmmdhgagjnfnfakjnnle"
+launch_in_workspace "number 6" "flatpak run org.telegram.desktop"
+launch_in_workspace "number 7" "flatpak run com.discordapp.Discord"
+launch_in_workspace "number 8" "/opt/google/chrome/google-chrome --profile-directory=Default --app-id=kmcnjdcipmgchfndpapkoecbidofdpbc"
+

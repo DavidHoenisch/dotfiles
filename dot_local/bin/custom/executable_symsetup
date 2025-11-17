@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+ln -s $HOME/Documents/drive/Github/drugo $HOME/Documents/Github/drugo
+ln -s $HOME/Documents/drive/Github/mcc_azure_infrastructure $HOME/Documents/Github/mcc_azure_infrastructure

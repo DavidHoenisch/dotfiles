@@ -1,0 +1,2 @@
+#!/bin/bash
+eza -liR | awk '{print $8}' | iters -c sha256sum 2> /dev/null | awk '{print $1}' | iters -p -c chx hash vthash | jq -r ".data.attributes.last_analysis_results.ALYac.result"

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Get the last command from history
+last_command=$(fc -ln -1)
+
+# Copy to clipboard using wl-copy
+echo "$last_command" | pbcopy

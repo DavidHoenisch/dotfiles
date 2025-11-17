@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Check if already in a tmux session
+if [ -n "$TMUX" ]; then
+    exit 0
+fi
+
+# List existing tmux sessions
+sessions=$(tmux ls 2>/dev/null)
+
+# Check if there are no sessions
+if [ -z "$sessions" ]; then
+    tmux new-session -s default
+else
+    # Count the number of sessions
+    session_count=$(echo "$sessions" | wc -l)
+
+    if [ "$session_count" -eq 1 ]; then
+        # Check if the single session is not the default one
+        session_name=$(echo "$sessions" | awk '{print $1}' | sed 's/:$//')
+        if [ "$session_name" != "default" ]; then
+            # Create a default session first
+            tmux new-session -d -s default
+        fi
+    fi
+
+    # Show fzf window to select a session
+    session_name=$(echo "$sessions" | $(which fzf) --height 40% --border --ansi | awk '{print $1}' | sed 's/:$//')
+
+    if [ -n "$session_name" ]; then
+        tmux attach-session -t "$session_name"
+    fi
+fi
+

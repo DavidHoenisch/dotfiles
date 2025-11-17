@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+import random
+import string
+import sys
+
+def generate_dummy_email():
+    # List of common free email domains
+    domains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'protonmail.com']
+    
+    # Generate random name (5-10 characters)
+    name_length = random.randint(5, 10)
+    name = ''.join(random.choices(string.ascii_lowercase, k=name_length))
+    
+    # Generate random number (0-999) to add to email
+    number = random.randint(0, 999)
+    
+    # Choose random domain
+    domain = random.choice(domains)
+    
+    # Combine parts to form email
+    return f"{name}{number}@{domain}"
+
+def generate_emails(count, output_file="dummy_emails.txt"):
+    try:
+        count = int(count)
+        if count < 0:
+            raise ValueError("Count must be non-negative")
+        
+        # Generate emails and write to file
+        with open(output_file, 'w') as f:
+            for _ in range(count):
+                email = generate_dummy_email()
+                f.write(email + '\n')
+        
+        print(f"Successfully generated {count} dummy emails to {output_file}")
+    
+    except ValueError as e:
+        print(f"Error: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python generate_dummy_emails.py <number_of_emails>")
+    else:
+        generate_emails(sys.argv[1])

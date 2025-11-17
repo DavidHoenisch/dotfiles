@@ -1,0 +1,2 @@
+ az group list --query "[?tags.tfid=='IGNORE']" | jq -r ".[].name" | iters -c az resource list -g | jq -r ".[] | [.name, .resourceGroup] | @tsv" > untracked.tsv
+

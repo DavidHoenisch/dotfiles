@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# Usage: ./semver bump {major|minor|patch}
+
+if [ "$1" != "bump" ]; then
+    echo "Error: Only 'bump' command is supported."
+    echo "Usage: $0 bump {major|minor|patch}"
+    exit 1
+fi
+
+BUMP_TYPE="$2"
+if [ -z "$BUMP_TYPE" ]; then
+    echo "Error: Bump type is required."
+    echo "Usage: $0 bump {major|minor|patch}"
+    exit 1
+fi
+
+VERSION_FILE="VERSION"
+if [ ! -f "$VERSION_FILE" ]; then
+    echo "Error: VERSION file not found in the current directory."
+    exit 1
+fi
+
+CURRENT_VERSION=$(cat "$VERSION_FILE" | tr -d '[:space:]')
+if ! [[ "$CURRENT_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo "Error: Invalid version format in VERSION file. Expected format: X.Y.Z"
+    exit 1
+fi
+
+IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+
+case "$BUMP_TYPE" in
+    major)
+        MAJOR=$((MAJOR + 1))
+        MINOR=0
+        PATCH=0
+        ;;
+    minor)
+        MINOR=$((MINOR + 1))
+        PATCH=0
+        ;;
+    patch)
+        PATCH=$((PATCH + 1))
+        ;;
+    *)
+        echo "Error: Invalid bump type '$BUMP_TYPE'. Must be one of: major, minor, patch."
+        exit 1
+        ;;
+esac
+
+NEW_VERSION="$MAJOR.$MINOR.$PATCH"
+
+echo "$NEW_VERSION" > "$VERSION_FILE"
+
+git add "$VERSION_FILE" || { echo "Error: Failed to git add VERSION file."; exit 1; }
+git commit -m "Bump version to $NEW_VERSION" || { echo "Error: Failed to commit version bump."; exit 1; }
+git tag "v$NEW_VERSION" || { echo "Error: Failed to create git tag."; exit 1; }
+
+echo "Version bumped to $NEW_VERSION and tagged as v$NEW_VERSION."

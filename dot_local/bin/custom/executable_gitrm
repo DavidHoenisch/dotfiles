@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+import os
+import subprocess
+import sys
+
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <pattern>")
+        sys.exit(1)
+    
+    pattern = sys.argv[1]
+    root_dir = '.'  # Assuming run from repo root
+    skip_dirs = {'.venv', 'venv'}  # Directories to skip traversing into
+    
+    for dirpath, dirnames, filenames in os.walk(root_dir):
+        # Modify dirnames in-place to skip certain directories
+        dirnames[:] = [d for d in dirnames if d not in skip_dirs]
+        
+        # Check directories
+        for dirname in list(dirnames):  # Use list to avoid modification issues
+            if dirname == pattern:
+                full_path = os.path.join(dirpath, dirname)
+                print(f"Removing {full_path} from git cache...")
+                subprocess.run(['git', 'rm', '-r', '--cached', '--ignore-unmatch', full_path], check=True)
+        
+        # Check files (if pattern is a file name)
+        for filename in filenames:
+            if filename == pattern:
+                full_path = os.path.join(dirpath, filename)
+                print(f"Removing {full_path} from git cache...")
+                subprocess.run(['git', 'rm', '--cached', '--ignore-unmatch', full_path], check=True)
+
+if __name__ == "__main__":
+    main()

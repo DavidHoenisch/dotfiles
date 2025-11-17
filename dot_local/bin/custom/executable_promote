@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# Script: promote
+# Description: Promotes a GitHub release candidate (RC) to a stable release by creating a new release with the RC suffix stripped.
+# Requirements: GitHub CLI (gh) installed and authenticated, fzf installed.
+
+# Exit on any error
+set -e
+
+# Step 1: Get the list of pre-releases using gh release list
+releases=$(gh release list --json tagName,name,isPrerelease --jq '.[] | select(.isPrerelease==true) | "\(.tagName)\t\(.name // "Untitled")\tPre-release"')
+
+if [ -z "$releases" ]; then
+  echo "No pre-releases found in this repository."
+  exit 1
+fi
+
+# Step 2: Use fzf to select a release
+selected=$(echo -e "$releases" | fzf --prompt="Select RC to promote: " --preview="gh release view {1}")
+
+if [ -z "$selected" ]; then
+  echo "No release selected. Exiting."
+  exit 1
+fi
+
+# Extract the selected tag
+rc_tag=$(echo "$selected" | cut -f1)
+
+# Step 3: Get the release info
+release_info=$(gh release view "$rc_tag" --json body,assets,targetCommitish)
+
+# Extract body, assets, and commit hash
+rc_body=$(echo "$release_info" | jq -r '.body // "No description provided"')
+assets=$(echo "$release_info" | jq -r '.assets[].url')
+commit_hash=$(echo "$release_info" | jq -r '.targetCommitish')
+
+# Strip -rc.* from the tag to get the stable tag
+stable_tag=$(echo "$rc_tag" | sed -E 's/(-rc\.[0-9]+.*)//')
+
+# Check if stable tag already exists
+if git rev-parse "$stable_tag" >/dev/null 2>&1; then
+  echo "Error: Tag $stable_tag already exists. Please delete it or choose a different version."
+  exit 1
+fi
+
+# Strip references to -rc.* in the body (replace tag and RC mentions)
+stable_body=$(echo "$rc_body" | sed -E "s/$rc_tag/$stable_tag/g" | sed -E 's/([Rr]elease [Cc]andidate|RC) [0-9]+/Stable Release/g')
+
+# Step 4: Create the new stable release
+# Create a new tag pointing to the same commit as the RC
+git tag "$stable_tag" "$commit_hash"
+git push origin "$stable_tag"
+
+# Create the release on GitHub
+gh release create "$stable_tag" \
+  --title "$stable_tag Stable Release" \
+  --notes "$stable_body" \
+  --latest
+
+# Upload assets if any
+if [ -n "$assets" ]; then
+  for asset_url in $assets; do
+    asset_name=$(basename "$asset_url")
+    # Download the asset temporarily
+    curl -L -o "/tmp/$asset_name" -H "Authorization: token $(gh auth token)" "$asset_url"
+    # Upload to new release
+    gh release upload "$stable_tag" "/tmp/$asset_name"
+    # Clean up
+    rm "/tmp/$asset_name"
+  done
+fi
+
+echo "Promoted $rc_tag to $stable_tag successfully!"

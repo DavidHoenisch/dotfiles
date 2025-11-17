@@ -1,0 +1,82 @@
+#!/usr/bin/env python
+import random
+import string
+import csv
+import sys
+
+def generate_password(length=12):
+    characters = string.ascii_letters + string.digits
+    return ''.join(random.choice(characters) for _ in range(length))
+
+def generate_users(count, output_file="dummy_users.csv"):
+    # Expanded lists of first and last names to ensure >10,000 combinations
+    first_names = [
+        'James', 'Emma', 'Liam', 'Olivia', 'Noah', 'Ava', 'William', 'Sophia', 'Michael', 'Isabella',
+        'Alexander', 'Mia', 'Daniel', 'Charlotte', 'Henry', 'Amelia', 'Joseph', 'Harper', 'David', 'Evelyn',
+        'John', 'Emily', 'Jacob', 'Elizabeth', 'Benjamin', 'Sofia', 'Lucas', 'Abigail', 'Mason', 'Grace',
+        'Logan', 'Ella', 'Ethan', 'Avery', 'Jackson', 'Scarlett', 'Sebastian', 'Chloe', 'Aiden', 'Victoria',
+        'Samuel', 'Madison', 'Matthew', 'Lily', 'Gabriel', 'Hannah', 'Isaac', 'Julia', 'Carter', 'Zoe',
+        'Anthony', 'Natalie', 'Dylan', 'Addison', 'Luke', 'Layla', 'Christopher', 'Penelope', 'Andrew', 'Mila'
+    ]  # 60 first names
+    last_names = [
+        'Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez',
+        'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin',
+        'Lee', 'Perez', 'Thompson', 'White', 'Harris', 'Sanchez', 'Clark', 'Ramirez', 'Lewis', 'Robinson',
+        'Walker', 'Young', 'Allen', 'King', 'Wright', 'Scott', 'Torres', 'Nguyen', 'Hill', 'Flores',
+        'Green', 'Adams', 'Nelson', 'Baker', 'Hall', 'Rivera', 'Campbell', 'Mitchell', 'Carter', 'Roberts',
+        'Gomez', 'Phillips', 'Evans', 'Turner', 'Diaz', 'Parker', 'Cruz', 'Edwards', 'Collins', 'Reyes',
+        'Stewart', 'Morris', 'Morales', 'Murphy', 'Cook', 'Rogers', 'Gutierrez', 'Oriz', 'Morgan', 'Cooper',
+        'Peterson', 'Bailey', 'Reed', 'Kelly', 'Howard', 'Ramos', 'Kim', 'Cox', 'Ward', 'Richardson',
+        'Watson', 'Brooks', 'Chavez', 'Wood', 'James', 'Bennett', 'Gray', 'Mendoza', 'Ruiz', 'Hughes',
+        'Price', 'Alvarez', 'Castillo', 'Sanders', 'Patel', 'Myers', 'Long', 'Ross', 'Foster', 'Jimenez'
+    ]  # 100 last names
+    
+    # Total possible combinations: 60 * 100 = 6,000
+    max_combinations = len(first_names) * len(last_names)
+    
+    try:
+        count = int(count)  # Convert count to integer early
+        if count > max_combinations:
+            print(f"Warning: Requested {count} names, but only {max_combinations} unique combinations possible. Duplicates may occur.")
+        
+        if count < 0:
+            raise ValueError("Count must be non-negative")
+        if count > 10000:
+            raise ValueError("Count cannot exceed 10,000")
+        
+        # Track used combinations to maximize uniqueness
+        used_combinations = set()
+        
+        # Generate users and write to CSV
+        with open(output_file, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['FirstName', 'LastName', 'Password'])
+            
+            for _ in range(count):
+                # Try to find a unique name combination
+                attempts = 0
+                max_attempts = 100  # Prevent infinite loops
+                while attempts < max_attempts:
+                    first = random.choice(first_names)
+                    last = random.choice(last_names)
+                    name_combo = (first, last)
+                    if name_combo not in used_combinations or len(used_combinations) >= max_combinations:
+                        used_combinations.add(name_combo)
+                        break
+                    attempts += 1
+                
+                password = generate_password()
+                writer.writerow([first, last, password])
+        
+        print(f"Successfully generated {count} dummy users to {output_file}")
+    
+    except ValueError as e:
+        print(f"Error: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python generate_unique_dummy_users.py <number_of_users>")
+    else:
+        generate_users(sys.argv[1])

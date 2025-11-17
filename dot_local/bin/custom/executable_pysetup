@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+# Ensure pyenv and pyenv-virtualenv are initialized in the script
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+NAME=$(basename "$PWD")
+
+# Use $(pwd) to correctly capture the current directory
+pushd "$(pwd)" >/dev/null
+
+# Deactivate any currently active virtualenv
+pyenv deactivate || true
+
+# Create a new virtualenv with the current directory's name
+pyenv virtualenv "$NAME"
+
+# Activate the new virtualenv
+pyenv activate "$NAME"
+
+# Install pyright in the virtualenv
+pip install pyright
+
+popd >/dev/null
+

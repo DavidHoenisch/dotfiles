@@ -1,0 +1,69 @@
+#!/usr/bin/env python
+
+import json
+import subprocess
+from pyfzf.pyfzf import FzfPrompt
+
+# Path to the JSON file
+JSON_FILE = '/home/dhoenisch/Documents/Github/Bible-kjv/kjv.json'
+
+
+# Load the JSON file
+with open(JSON_FILE, 'r') as file:
+    data = json.load(file)
+
+# Function to search for the text and return the JSON path
+def get_json_path(data, search_text):
+    paths = []
+    
+    def search(data, search_text, current_path):
+        if isinstance(data, dict):
+            for key, value in data.items():
+                new_path = current_path + [key]
+                if isinstance(value, (list, dict)):
+                    search(value, search_text, new_path)
+                elif isinstance(value, str) and search_text in value:
+                    paths.append(new_path)
+        elif isinstance(data, list):
+            for index, item in enumerate(data):
+                new_path = current_path + [str(index)]
+                if isinstance(item, (list, dict)):
+                    search(item, search_text, new_path)
+                elif isinstance(item, str) and search_text in item:
+                    paths.append(new_path)
+
+    search(data, search_text, [])
+    return paths
+
+# Prepare the data for fuzzy search
+fzf = FzfPrompt()
+search_data = []
+
+def collect_text(data, current_path=""):
+    if isinstance(data, dict):
+        for key, value in data.items():
+            new_path = f"{current_path}.{key}" if current_path else key
+            if isinstance(value, str):
+                search_data.append(f'{value}: {new_path}')
+            elif isinstance(value, (dict, list)):
+                collect_text(value, new_path)
+    elif isinstance(data, list):
+        for index, item in enumerate(data):
+            new_path = f"{current_path}.{index}" if current_path else str(index)
+            if isinstance(item, str):
+                search_data.append(f'{item}: {new_path}')
+            elif isinstance(item, (dict, list)):
+                collect_text(item, new_path)
+
+collect_text(data)
+
+# Perform fuzzy search
+selected = fzf.prompt(search_data)
+
+if selected:
+    selected_value = selected[0].split(': ')[0]
+    json_paths = get_json_path(data, selected_value)
+    for path in json_paths:
+        print(f'JSON Path: {".".join(path)}')
+else:
+    print('No selection made.')

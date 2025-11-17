@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ trivy --quiet config . --format json | jq -r '.Results.[] | [.MisconfSummary.Failures, .Target ] | join(" ")' | sed '1d' |cut -d " " -f1 | awk '{sum += $1} END {print sum}'

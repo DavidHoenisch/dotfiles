@@ -1,0 +1,35 @@
+#!/bin/bash
+# Script to get commits made by the logged-in user in the past 12 hours across all branches
+# Usage: ./get_recent_commits.sh owner/repo
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <owner/repo>"
+  echo "Example: $0 octocat/Hello-World"
+  exit 1
+fi
+REPO="$1"
+# Get the current user's login
+USER=$(gh api user --jq '.login')
+if [ $? -ne 0 ]; then
+  echo "Error: Failed to get user information. Make sure you're logged in with 'gh auth login'"
+  exit 1
+fi
+# Calculate timestamp for 12 hours ago (ISO 8601 format)
+SINCE=$(date -d '12 hours ago' -Iseconds)
+echo "Searching for commits by user '$USER' in repository '$REPO' since $SINCE"
+echo "----------------------------------------"
+# Get list of branches
+BRANCHES=$(gh api "repos/$REPO/branches" --paginate --jq '.[].name')
+if [ $? -ne 0 ]; then
+  echo "Error: Failed to fetch branches. Please check the repository name and your permissions."
+  exit 1
+fi
+# Loop over each branch and fetch commits
+for BRANCH in $BRANCHES; do
+  gh api "repos/$REPO/commits?sha=$BRANCH&since=$SINCE" \
+    --paginate \
+    --jq ".[] | select(.author.login == \"$USER\" and .commit.author.date >= \"$SINCE\") | \"\(.sha[0:7]) - \(.commit.message | split(\"\n\")[0]) (\(.commit.author.date))\n\(.html_url)\n\""
+done
+if [ $? -ne 0 ]; then
+  echo "Error: Failed to fetch commits. Please check the repository name and your permissions."
+  exit 1
+fi

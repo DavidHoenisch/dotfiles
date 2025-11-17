@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Create the directory if it doesn't exist
+mkdir -p ~/Pictures/termshot
+
+# Generate the filename with current datetime
+DATETIME=$(date +%Y-%m-%d_%H%M%S)
+FILENAME="$HOME/Pictures/termshot/${DATETIME}.png"
+
+# Run termshot with --show-cmd, save to filename, and pass the command
+termshot --show-cmd --filename "$FILENAME" -- "$@"
+
+# Copy the image to clipboard (assuming wl-clipboard on Wayland/Hyprland)
+wl-copy --type image/png < "$FILENAME"

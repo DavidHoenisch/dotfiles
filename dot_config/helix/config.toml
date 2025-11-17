@@ -1,0 +1,74 @@
+theme = "kanagawa"
+
+[editor]
+line-number = "relative"
+scrolloff = 5
+middle-click-paste = false
+shell = ["bash", "-c"]
+true-color = true
+rulers = [120]
+auto-format = true
+cursorline = true
+gutters = ["diagnostics", "line-numbers", "spacer", "diff"]
+end-of-line-diagnostics = "disable"
+
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+other-lines = "disable"
+
+[editor.soft-wrap]
+enable = true
+wrap-indicator = ''
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "|"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.indent-guides]
+render = true
+character = "|"
+
+[editor.lsp]
+display-messages = true     # Inline sigs!
+display-inlay-hints = false
+
+[keys.normal]
+"*" = ['move_char_right', 'move_prev_word_start', 'move_next_word_end', 'search_selection']
+0 = "goto_line_start"
+G = "goto_file_end"
+C-r = ":reload"
+C-e = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
+  ':insert-output echo "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+]
+
+C-l = [
+  ':new',
+  ':insert-output lazygit',
+  ':buffer-close!',
+  ':redraw'
+]
+
+[keys.normal.space]
+F = "file_picker_in_current_buffer_directory"
+g = ":sh zellij run --stacked -- helix-live-grep"
+l = ":pipe-to helix-debug-print"
+q = ":quit-all"
+w = ":write-all"
+x = ":buffer-close"
+B = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"

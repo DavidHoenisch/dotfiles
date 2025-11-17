@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function create_issue() {
+    local input_json="$1"
+    TITLE=$(echo "$input_json" | jq -r '.Message')
+    SEVERITY=$(echo "$input_json" | jq -r '.Severity')
+    RESOLUTION=$(echo "$input_json" | jq -r '.Resolution')
+    CAUSE=$(echo "$input_json" | jq -r '.CauseMetadata.Resource')
+    BODYFINAL=$(printf "Severity: %s\nHow to fix:\n%s\nRoot Cause:\n%s" "$SEVERITY" "$RESOLUTION" "$CAUSE")
+
+    echo "$BODYFINAL"
+    gh issue create --title "$TITLE" --body "$BODYFINAL"
+}
+
+if [ -z "$1" ]; then
+    echo "no input"
+    exit 1
+fi
+
+create_issue "$1"
+

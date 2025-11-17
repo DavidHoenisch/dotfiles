@@ -1,0 +1,16 @@
+#!/bin/bash
+
+read -p "YT link to song: " url
+read -p "Song artist: " artist
+read -p "Title of song (hyphenated): " title
+music_folder="$HOME/Music/new-tunes"
+
+function get_song() {
+  echo $url, $artist, $title
+  yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=mp4]/best[ext=mp4]/best' "$url" -o "$music_folder/$title.mp4"
+  ffmpeg -i "$music_folder/$title.mp4" -codec:a mp3 "$music_folder/$title.mp3"
+  id3v2 -a "$artist" "$music_folder/$title.mp3"
+  rm *.mp4
+}
+
+(cd "$music_folder" && get_song)

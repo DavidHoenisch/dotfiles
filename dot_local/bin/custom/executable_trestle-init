@@ -1,0 +1,103 @@
+#!/bin/bash
+
+# Script to set up a Compliance-Trestle repository structure
+# Assumptions:
+# - Python 3.8+ is installed
+# - pip is available
+# - Git is installed (for version control)
+# Usage: ./setup_trestle_repo.sh <repo_name>
+# Example: ./setup_trestle_repo.sh oscal-compliance-repo
+
+# Check for repo name argument
+if [ $# -eq 0 ]; then
+    echo "Error: Please provide a repository name as an argument."
+    echo "Usage: $0 <repo_name>"
+    exit 1
+fi
+
+REPO_NAME="$1"
+
+# Step 1: Create the repository directory
+mkdir -p "$REPO_NAME"
+cd "$REPO_NAME" || exit 1
+
+# Step 2: Install Compliance-Trestle if not already installed
+if ! command -v trestle &> /dev/null; then
+    echo "Compliance-Trestle not found. Installing..."
+    pip install --user compliance-trestle
+    if [ $? -ne 0 ]; then
+        echo "Error: Failed to install compliance-trestle. Please install manually."
+        exit 1
+    fi
+    # Add to PATH if needed (for current session)
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Step 3: Initialize Trestle workspace
+trestle init
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to run 'trestle init'. Ensure compliance-trestle is installed correctly."
+    exit 1
+fi
+
+# Step 4: Create additional directories for Lula integration and authoring
+mkdir -p validations/  # For Lula validation YAML files
+mkdir -p md_ssp/       # For Markdown authoring of SSP (generated later)
+mkdir -p templates/    # For shared templates (e.g., via git submodule)
+
+# Step 5: Create .gitignore file
+cat << EOF > .gitignore
+# Ignore Python caches and virtual envs
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.swp
+
+# Ignore generated OSCAL files if not versioned
+*.json.bak
+*.yaml.bak
+
+# Ignore Trestle internals if needed
+.trestle/cache/
+EOF
+
+# Step 6: Create README.md with basic documentation
+cat << EOF > README.md
+# OSCAL Compliance Repository
+
+This repository is set up for managing OSCAL artifacts using Compliance-Trestle.
+
+## Structure
+- \`.trestle/\`: Trestle configuration
+- \`catalogs/\`: OSCAL catalogs (e.g., NIST 800-53)
+- \`profiles/\`: OSCAL profiles (e.g., moderate baseline)
+- \`component-definitions/\`: Component definitions (import from Lula)
+- \`system-security-plans/\`: Assembled SSPs
+- \`assessment-results/\`: Assessment results (from Lula validations)
+- \`validations/\`: Lula validation YAML files
+- \`md_ssp/\`: Markdown files for authoring SSP
+- \`templates/\`: Shared templates
+
+## Usage
+- Import Lula components: \`trestle import -f path/to/lula-component.yaml -o component-definitions/k8s-cluster\`
+- Generate SSP Markdown: \`trestle author ssp-generate --profile profiles/moderate --output md_ssp\`
+- Validate: \`trestle validate --all\`
+
+For more, see Compliance-Trestle docs: https://ibm.github.io/compliance-trestle/
+EOF
+
+# Step 7: Initialize Git repository
+git init
+git add .
+git commit -m "Initial setup of Trestle repository structure"
+
+echo "Trestle repository '$REPO_NAME' set up successfully!"
+echo "Next steps: cd $REPO_NAME and start importing OSCAL files."
