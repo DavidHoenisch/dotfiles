@@ -44,7 +44,6 @@ status is-interactive; and begin
     alias ps procs
     alias top btop
     alias tree 'eza --tree --icons'
-    alias yy yazi
     alias mp multipass
     alias zz zellij
     alias n nvim
