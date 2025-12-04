@@ -1,4 +1,4 @@
-theme = "kanagawa"
+theme = "kanagawa-dragon"
 
 [editor]
 line-number = "relative"
@@ -64,10 +64,17 @@ C-l = [
   ':redraw'
 ]
 
+[keys.select]
+C-r = ":reflow 60"
+
 [keys.normal.space]
 F = "file_picker_in_current_buffer_directory"
 g = ":sh zellij run --stacked -- helix-live-grep"
 l = ":pipe-to helix-debug-print"
+s = [
+  ":pipe-to cat > /tmp/helix-freeze-selection",
+  ":sh helix-freeze-to-clipboard %{buffer_name} &"
+]
 q = ":quit-all"
 w = ":write-all"
 x = ":buffer-close"
